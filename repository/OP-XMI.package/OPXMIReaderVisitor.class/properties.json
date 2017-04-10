@@ -1,0 +1,17 @@
+{
+	"commentStamp" : "",
+	"super" : "XMLDOMVisitor",
+	"category" : "OP-XMI-Reader",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"document",
+		"root",
+		"mapping",
+		"unresolved",
+		"refIdMapping"
+	],
+	"name" : "OPXMIReaderVisitor",
+	"type" : "normal"
+}

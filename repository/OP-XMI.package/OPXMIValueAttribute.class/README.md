@@ -1,0 +1,1 @@
+XMIValueAttribute is simply an XML attribute with a value.

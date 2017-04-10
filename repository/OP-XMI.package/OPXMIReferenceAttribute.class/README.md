@@ -1,0 +1,1 @@
+XMIReferenceAttribute is an XML attribute that references an XMIElement by id.

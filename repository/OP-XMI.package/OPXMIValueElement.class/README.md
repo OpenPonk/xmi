@@ -1,0 +1,1 @@
+XMIValueElement is an XML element that can have a value, but cannot contain other XML elements or attributes.

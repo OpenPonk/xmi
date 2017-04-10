@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "OPXMIInfoItems",
+	"category" : "OP-XMI-DOM",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"xmiName"
+	],
+	"name" : "OPXMIElement",
+	"type" : "normal"
+}

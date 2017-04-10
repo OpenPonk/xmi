@@ -1,0 +1,14 @@
+{
+	"commentStamp" : "",
+	"super" : "TestCase",
+	"category" : "OP-XMI-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"visitor",
+		"result"
+	],
+	"name" : "OPXMIReaderVisitorTest",
+	"type" : "normal"
+}

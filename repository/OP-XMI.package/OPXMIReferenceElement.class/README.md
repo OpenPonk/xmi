@@ -1,0 +1,1 @@
+XMIReferenceElement is an XML element with an idref or href attribute that references another XMIElement, by id, URI, or URI and XPointer.

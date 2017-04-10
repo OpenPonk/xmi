@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "XMLAttributeList",
+	"category" : "OP-XMI-DOM",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "OPXMIAttributeList",
+	"type" : "normal"
+}
