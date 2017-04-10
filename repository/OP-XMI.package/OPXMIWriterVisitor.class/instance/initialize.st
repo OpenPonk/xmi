@@ -2,6 +2,5 @@ initialization
 initialize
 	super initialize.
 	writer := XMLWriter new.
-	writer
-		enablePrettyPrinting;
-		xml.
+	writer enablePrettyPrinting.
+	writer xml encoding: 'UTF-8'

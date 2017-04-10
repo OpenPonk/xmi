@@ -14,7 +14,7 @@ testVisitObjectElement
 	self
 		assert: visitor contents
 		equals:
-			'<?xml version="1.0"?>
+			'<?xml version="1.0" encoding="UTF-8"?>
 <Object xmi:id="ID">
     <body>CONTENT</body>
 </Object>'
