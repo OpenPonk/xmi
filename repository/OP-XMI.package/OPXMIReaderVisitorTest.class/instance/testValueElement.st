@@ -6,5 +6,6 @@ testValueElement
 				name: 'el';
 				addString: 'content';
 				yourself).
+	self assert: result isValueElement.
 	self assert: result xmiName equals: 'el'.
 	self assert: result value equals: 'content'
