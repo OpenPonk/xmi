@@ -9,7 +9,7 @@ baseline: spec
 						className: #ConfigurationOfXMLParser;
 						versionString: #stable;
 						repository: 'http://smalltalkhub.com/mc/PharoExtras/XMLParser/main/' ].
-			spec spec
+			spec
 				baseline: 'XMLDOMVisitor'
 				with: [ spec repository: 'github://peteruhnak/xml-dom-visitor/repository' ].
 			spec package: 'OP-XMI' with: [ spec requires: #('XMLParser' 'XMLDOMVisitor') ].
