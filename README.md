@@ -33,4 +33,11 @@ A reference element in the XML is converted into a direct reference to the targe
 
 ### Serialization
 
-WIP
+A XMI graph can be converted back into a XML file with writer.
+
+```smalltalk
+xmiGraph := OPXMIReader fromUrl: 'http://www.omg.org/spec/XMI/20131001/XMI-model.xmi'.
+xmlString := OPXMIWriter writeToString: root.
+```
+
+See tests and XMI specs for usage.
