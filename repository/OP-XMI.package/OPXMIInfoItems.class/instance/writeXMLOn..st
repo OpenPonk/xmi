@@ -1,2 +1,0 @@
-GTInspector-Extensions
-writeXMLOn: aWriter
