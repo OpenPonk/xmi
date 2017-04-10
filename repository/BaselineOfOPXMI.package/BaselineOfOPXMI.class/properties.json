@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "PeterUhnak 4/10/2017 13:31",
+	"super" : "BaselineOf",
+	"category" : "BaselineOfOPXMI",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "BaselineOfOPXMI",
+	"type" : "normal"
+}
