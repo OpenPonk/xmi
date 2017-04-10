@@ -13,4 +13,5 @@ baseline: spec
 				baseline: 'XMLDOMVisitor'
 				with: [ spec repository: 'github://peteruhnak/xml-dom-visitor/repository' ].
 			spec package: 'OP-XMI' with: [ spec requires: #('XMLParser' 'XMLDOMVisitor') ].
-			spec group: 'default' with: #('OP-XMI') ]
+			spec package: 'OP-XMI-GTExtensions' with: [ spec requires: #('OP-XMI') ].
+			spec group: 'default' with: #('OP-XMI' 'OP-XMI-GTExtensions') ]
