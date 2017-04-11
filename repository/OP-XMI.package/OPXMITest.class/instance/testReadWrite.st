@@ -12,6 +12,6 @@ testReadWrite
 		</item>
 	</container>
 </xmi:XMI>'.
-    root := OPXMIReader from: in readStream.
+    root := OPXMIReader readFrom: in readStream.
     out := OPXMIWriter writeToString: root.
     self assert: (self normalized: in) equals: (self normalized: out)
