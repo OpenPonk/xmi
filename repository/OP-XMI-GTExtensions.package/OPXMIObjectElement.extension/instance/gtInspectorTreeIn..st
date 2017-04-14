@@ -8,7 +8,7 @@ gtInspectorTreeIn: aComposite
 			each isObjectElement
 				ifTrue: [ each containedItems ]
 				ifFalse: [ each isReferenceItem
-						ifTrue: [ each referencedElements ]
+						ifTrue: [ #()"each referencedElements" ]
 						ifFalse: [ #() ] ] ];
 		format: [ :each | each treeViewLabelText ];
 		rootsExpanded
