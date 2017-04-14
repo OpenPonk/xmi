@@ -1,4 +1,4 @@
-accessing
+accessing - shortcuts
 xmiType
 	^ self containedItems
 		detect: [ :each | each xmiName = #xmi:type ]
