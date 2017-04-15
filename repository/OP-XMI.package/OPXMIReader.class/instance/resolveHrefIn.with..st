@@ -1,7 +1,7 @@
 instance creation
-resolveHrefIn: aReferenceElement with: aMapping
+resolveHrefIn: aReferenceItem with: aMapping
 	| parts |
-	parts := aReferenceElement href splitOn: '#'.
+	parts := aReferenceItem href splitOn: '#'.
 	aMapping
 		at: parts first
-		ifPresent: [ :root | aReferenceElement referencedElements: {root findElementWithXmiId: parts second} ]
+		ifPresent: [ :root | aReferenceItem referencedElements: {root findElementWithXmiId: parts second} ]
