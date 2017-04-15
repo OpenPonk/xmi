@@ -1,6 +1,6 @@
 instance creation
 resolveHrefsIn: anElement with: aMapping
-	anElement isReferenceItem
+	anElement isReferenceElement
 		ifTrue: [ ^ self resolveHrefIn: anElement with: aMapping ].
 	anElement isObjectElement
 		ifFalse: [ ^ self ].
