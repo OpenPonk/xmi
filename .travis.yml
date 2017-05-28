@@ -27,7 +27,7 @@ deploy:
   bucket: 'gh-coverage-peteruhnak-com'
   region: eu-central-1
   local_dir: coverage-result
-  upload-dir: $TRAVIS_REPO_SLUG/$TRAVIS_BUILD_NUMBER
+  upload-dir: $TRAVIS_REPO_SLUG/$TRAVIS_JOB_NUMBER
   skip-cleanup: true
   on:
     branch: master
