@@ -11,4 +11,5 @@ testReferenceElementHrefUnresolvedWithType
 	result := visitor elementAt: reference.
 	self assert: result isReferenceElement.
 	self assert: result href equals: 'PrimitiveTypes.xmi#String'.
+	self assert: result xmiType equals: 'uml:PrimitiveType'.
 	self assert: result referencedElements size equals: 0
