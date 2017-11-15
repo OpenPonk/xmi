@@ -5,7 +5,6 @@ os:
   - linux
 
 smalltalk:
-  - Pharo-5.0
   - Pharo-6.0
 
 cache:
@@ -14,20 +13,3 @@ cache:
 
 before_script:
   - wget -O- https://raw.githubusercontent.com/peteruhnak/hapao-coverage/master/package-cache.sh | bash
-
-after_success:
-  - wget -O- https://raw.githubusercontent.com/peteruhnak/hapao-coverage/master/hapao-coverage.sh | bash
-
-deploy:
-  provider: s3
-  access_key_id:
-    secure: "amUOCLjDR/Mcdlvow2kGqu46tYdUuZBsT3rEtkE2wMnzd1sdeptAxwQw0L/ix5uMjAQTMUlcqjg3H5c/38kkb0aBxzOsp+P4hBMJJ5PdcYXhKWT9rPxgWMFPlV9EriclYynSDYNiqHK/YENOmphoSzrsFiDaUgNFtLCA7V8jpgP0fLsnc69xv+G1eNMARW/llM7aym/C3Pp6Nt4Hrwer8BMTLLSzyX/qgO07XMy6NztBBSNGcOy6FZ+C1Y8+funau/JGj55pxMiBRiODUKE4thmCThBqy57zR1THSjWVzLgLJMAf5jl/1mezZmvoP4GH68aCDHIaPEm4YO5r/XiZ3N7/nC9XLMSVH9e7hMQ6i0wzu1ByeRhSiKyIESISQTSTrE3Et9u0HpzLHYdkVWB/Erw/h/LPPq2MU4cKfJxKcq9+kMPTTThPCtwzTqRK6ahmKz3HmfPeDDw2lwL5nJJcFN7pONwttACb923nklpnAly9kF4hD9g/Bg2HNS3FzjCR87Ccnad8tDmHbVgCS77ETnojLsBYV47Fh7sMf66J6bneBkgWPYe6h4bblQOeDpOdXcKEZklbHpGz3tInLAvk4VlPK6kgrQd0ImAKluHuFkoLaWM+WVEDEg0ZrmBLL6KxkRqpwMx7tFhna95gnyUToIet+mTqdVIAl4G2lp+M/zo="
-  secret_access_key:
-    secure: "HUqb81W5e15n8+dWNyny9l9/Bchnt0k9NPnX6aPMMLFH0wrFBkiedD1yQ4XgttEtxKIvjmfy1dNYWFPAqRxlxZVIR8LhJ837qR+IWbe0P5V+Sj/kKjv3b5/dAgzOuxBadn2oplzdEhg8x6imyPDq9K9F5WD3YabfcAPL821RpPiFMrtzKC/pT1RU2KXTNNMf3ww1O6CmNhalgDNTE4rMLmH6zq4cKMvdPZXJQ4spH1OYCWKDYbKxhjH1OYO59Bnj6XT/Zm78104FVAXv+u+khVhOFbCW5SOzGzV0S3+sHWvONiBM18xAyAuOUhuv2YnJmaJgpVmz+KrBITpKaNDqNfpiMlj9XX4tafOC5YhzBvKgvAU/PJt7rijK99Dgj6GyGn4GHTnT43/UlJBOMPr3m85WbdxXHVYc7lA+1okFtCCmRX0FE+4SQ7qlpJcsCk2B8QCIeceXyhUFaenNzBsOHLqt/1akpl8v5h6kTNvDJ8yeSNwsnZEgC1kc6473MQeFB84JdC8qMW8PClCqdE3eIjhpXt/0koGIc57cjkqzaE7vUXpX2Z7meNJae59hb8YpHDOIokNo93ZdyHucMDJKe5Mz89XAiIrofsgdvyS3RlCmSZl6kjzNseoOMR9orS0kXAX1MNwBz8hROiDt4Paec1i6NEOq+i79PWLfJ8SH4nw="
-  bucket: 'gh-coverage-peteruhnak-com'
-  region: eu-central-1
-  local_dir: coverage-result
-  upload-dir: $TRAVIS_REPO_SLUG/$TRAVIS_JOB_NUMBER
-  skip-cleanup: true
-  on:
-    branch: master
