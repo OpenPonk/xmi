@@ -6,7 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"referencedElements"
+		"referencedElements",
+		"href"
 	],
 	"name" : "OPXMIReferenceAttribute",
 	"type" : "normal"
