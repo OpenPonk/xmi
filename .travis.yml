@@ -5,11 +5,5 @@ os:
   - linux
 
 smalltalk:
-  - Pharo-6.0
-
-cache:
-  directories:
-    $HOME/package-cache
-
-before_script:
-  - wget -O- https://raw.githubusercontent.com/peteruhnak/hapao-coverage/master/package-cache.sh | bash
+  - Pharo-6.1
+  - Pharo-7.0
