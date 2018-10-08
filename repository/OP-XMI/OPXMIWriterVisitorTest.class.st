@@ -50,7 +50,7 @@ OPXMIWriterVisitorTest >> testVisitReferenceAttribute [
 									{OPXMIValueAttribute new
 										xmiName: 'xmi:id';
 										value: 'AAA'}}) ].
-	self assert: visitor contents lines last equals: '<outer key="AAA" />'
+	self assert: visitor contents lines last equals: '<outer key="AAA"/>'
 ]
 
 { #category : #tests }
@@ -66,7 +66,7 @@ OPXMIWriterVisitorTest >> testVisitReferenceElement [
 							{OPXMIValueElement new
 								xmiName: 'xmi:id';
 								value: 'AAA'}}).
-	self assert: visitor contents lines last equals: '<name xmi:idref="AAA" />'
+	self assert: visitor contents lines last equals: '<name xmi:idref="AAA"/>'
 ]
 
 { #category : #tests }
@@ -76,7 +76,7 @@ OPXMIWriterVisitorTest >> testVisitReferenceElementHref [
 			(OPXMIReferenceElement new
 				xmiName: 'name';
 				href: 'http://UNIVERSE').
-	self assert: visitor contents lines last equals: '<name href="http://UNIVERSE" />'
+	self assert: visitor contents lines last equals: '<name href="http://UNIVERSE"/>'
 ]
 
 { #category : #tests }
@@ -89,7 +89,7 @@ OPXMIWriterVisitorTest >> testVisitReferenceElementHrefType [
 				href: 'http://UNIVERSE').
 	self
 		assert: visitor contents lines last
-		equals: '<name xmi:type="uml:PrimitiveType" href="http://UNIVERSE" />'
+		equals: '<name xmi:type="uml:PrimitiveType" href="http://UNIVERSE"/>'
 ]
 
 { #category : #tests }
@@ -101,7 +101,7 @@ OPXMIWriterVisitorTest >> testVisitValueAttribute [
 					(OPXMIValueAttribute new
 						xmiName: 'key';
 						value: 'VALUE') ].
-	self assert: visitor contents lines last equals: '<outer key="VALUE" />'
+	self assert: visitor contents lines last equals: '<outer key="VALUE"/>'
 ]
 
 { #category : #tests }
@@ -117,5 +117,5 @@ OPXMIWriterVisitorTest >> testVisitXmiElement [
 		assert: visitor contents
 		equals:
 			'<?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI />'
+<xmi:XMI/>'
 ]

@@ -18,7 +18,7 @@ OPXMITest >> testReadWrite [
 <xmi:XMI>
 	<container xmi:id="AA">
 		<item xmi:id="BB">
-			<reference xmi:idref="CC" />
+			<reference xmi:idref="CC"/>
 		</item>
 		<item xmi:id="CC">
 			<body>Content</body>
