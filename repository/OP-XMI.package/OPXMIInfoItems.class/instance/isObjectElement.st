@@ -1,3 +1,0 @@
-testing
-isObjectElement
-	^ false

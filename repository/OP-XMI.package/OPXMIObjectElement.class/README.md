@@ -1,1 +1,0 @@
-XMIObjectElement is an XML element that can contain other information items (XML elements and attributes).
