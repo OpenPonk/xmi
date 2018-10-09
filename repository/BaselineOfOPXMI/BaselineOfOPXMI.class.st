@@ -20,7 +20,7 @@ BaselineOfOPXMI >> baseline: spec [
 						repository: 'http://smalltalkhub.com/mc/PharoExtras/XMLParser/main/' ].
 			spec
 				baseline: 'XMLDOMVisitor'
-				with: [ spec repository: 'github://peteruhnak/xml-dom-visitor:v1.?/repository' ].
+				with: [ spec repository: 'github://peteruhnak/xml-dom-visitor:v1.x/repository' ].
 			spec package: 'OP-XMI' with: [ spec requires: #('XMLParser' 'XMLDOMVisitor') ].
 			spec package: 'OP-XMI-GTExtensions' with: [ spec requires: #('OP-XMI') ].
 			spec group: 'default' with: #('OP-XMI' 'OP-XMI-GTExtensions') ]
