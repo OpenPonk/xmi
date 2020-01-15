@@ -12,12 +12,10 @@ BaselineOfOPXMI >> baseline: spec [
 	<baseline>
 	spec
 		for: #common
-		do: [ spec
-				project: 'XMLParser'
-				with: [ spec
-						className: #ConfigurationOfXMLParser;
-						versionString: #stable;
-						repository: 'http://smalltalkhub.com/mc/PharoExtras/XMLParser/main/' ].
+		do: [ 
+			spec
+				baseline: 'XMLParser'
+				with: [ spec repository: 'github://pharo-contributions/XML-XMLParser:3.5.x/src' ].
 			spec
 				baseline: 'XMLDOMVisitor'
 				with: [ spec repository: 'github://peteruhnak/xml-dom-visitor:v1.x/repository' ].
