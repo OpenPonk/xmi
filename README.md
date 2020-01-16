@@ -1,5 +1,5 @@
 # XMI
-[![Build Status](https://travis-ci.org/OpenPonk/xmi.svg?branch=master)](https://travis-ci.org/OpenPonk/xmi) [![Coverage Status](https://coveralls.io/repos/github/OpenPonk/xmi/badge.svg?branch=master)](https://coveralls.io/github/OpenPonk/xmi?branch=master)
+[![Build Status](https://travis-ci.com/OpenPonk/xmi.svg?branch=master)](https://travis-ci.com/OpenPonk/xmi) [![Coverage Status](https://coveralls.io/repos/github/OpenPonk/xmi/badge.svg?branch=master)](https://coveralls.io/github/OpenPonk/xmi?branch=master)
 
 Mapping library between XML documents and XMI serialization models based on OMG's [XMI 2.5.1 specifications](http://www.omg.org/spec/XMI/2.5.1/).
 
