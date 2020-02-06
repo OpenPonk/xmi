@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'document'
 	],
-	#category : 'OP-XMI-Reader'
+	#category : #'OP-XMI-Reader'
 }
 
 { #category : #'instance creation' }
@@ -28,7 +28,7 @@ OPXMIReader class >> readFromMapping: aMapping [
 { #category : #'instance creation' }
 OPXMIReader >> readFrom: aStream [
 	| dom root |
-	dom := XMLDOMParser parse: aStream readStream usingNamespaces: false.
+	dom := XMLDOMParser parse: aStream usingNamespaces: false.
 	root := OPXMIReaderVisitor new visitDocument: dom.
 	^ root
 ]
