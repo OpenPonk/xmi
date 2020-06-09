@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'writer'
 	],
-	#category : 'OP-XMI-Writer'
+	#category : #'OP-XMI-Writer'
 }
 
 { #category : #accessing }
@@ -16,7 +16,8 @@ OPXMIWriterVisitor >> contents [
 OPXMIWriterVisitor >> initialize [
 	super initialize.
 	writer := XMLWriter new.
-	writer enablePrettyPrinting.
+	writer formatter: OPXMLPrettyPrintingWriterFormatter new.
+	writer lineBreak: '&#10;'.
 	writer xml encoding: 'UTF-8'
 ]
 
