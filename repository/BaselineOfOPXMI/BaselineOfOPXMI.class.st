@@ -18,7 +18,7 @@ BaselineOfOPXMI >> baseline: spec [
 				with: [ spec repository: 'github://pharo-contributions/XML-XMLParser:3.5.x/src' ].
 			spec
 				baseline: 'XMLDOMVisitor'
-				with: [ spec repository: 'github://OpenPonk/xml-dom-visitor/repository' ].
+				with: [ spec repository: 'github://OpenPonk/xml-dom-visitor:v2.0.0/repository' ].
 			spec package: 'OP-XMI' with: [ spec requires: #('XMLParser' 'XMLDOMVisitor') ].
 			spec package: 'OP-XMI-GTExtensions' with: [ spec requires: #('OP-XMI') ].
 			spec group: 'default' with: #('OP-XMI' 'OP-XMI-GTExtensions') ]
