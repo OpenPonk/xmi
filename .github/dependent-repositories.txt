@@ -1,6 +1,6 @@
 {
 	"include" : [
-		{ "repository" : "OpenPonk/uml-xmi" },
-		{ "repository" : "OpenPonk/uml-bootstrap-generator" }
+		{ "repository" : "OpenPonk/uml-xmi", "build-dependent" : true },
+		{ "repository" : "OpenPonk/uml-bootstrap-generator", "build-dependent" : false }
 	]
 }
