@@ -60,7 +60,7 @@ jobs:
   create-dependent-matrix:
     runs-on: ubuntu-latest
     name: 'Find dependent repositories'
-    if: ${{ github.event_name == 'push' || github.event.inputs.build-dependent }}
+    if: ${{ github.event_name == 'push' || contains(github.event.inputs.build-dependent || false, 'true') }}
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
@@ -87,4 +87,4 @@ jobs:
           workflow: Nightly
           repo: ${{ matrix.repository }}
           token: ${{ secrets.WORKFLOW_ACCESS_TOKEN }}
-          inputs: '{ "build-dependent": ${{ matrix.build-dependent }} }'
+          inputs: '{ "build-dependent": "${{ matrix.build-dependent }}" }'
