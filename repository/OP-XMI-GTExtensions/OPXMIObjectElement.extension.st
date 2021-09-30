@@ -29,6 +29,23 @@ OPXMIObjectElement >> gtInspectorTreeIn: aComposite [
 ]
 
 { #category : #'*OP-XMI-GTExtensions' }
+OPXMIObjectElement >> inspectionProperties [
+
+	<inspectorPresentationOrder: 5 title: 'Tree'>
+	^ SpTreePresenter new
+		  roots: { self };
+		  children: [ :each | 
+			  each isObjectElement
+				  ifTrue: [ each containedItems ]
+				  ifFalse: [ 
+					  each isReferenceItem
+						  ifTrue: [ each referencedElements ]
+						  ifFalse: [ #(  ) ] ] ];
+		  display: [ :each | each treeViewLabelText ];
+		  yourself
+]
+
+{ #category : #'*OP-XMI-GTExtensions' }
 OPXMIObjectElement >> writeXMLOn: aWriter [
 	aWriter
 		tag: self xmiName
