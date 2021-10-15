@@ -31,7 +31,7 @@ OPXMIObjectElement >> gtInspectorTreeIn: aComposite [
 { #category : #'*OP-XMI-GTExtensions' }
 OPXMIObjectElement >> inspectionProperties [
 
-	<inspectorPresentationOrder: 5 title: 'Tree'>
+	"<inspectorPresentationOrder: 5 title: 'Tree'>"
 	^ SpTreePresenter new
 		  roots: { self };
 		  children: [ :each | 
