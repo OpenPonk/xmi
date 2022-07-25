@@ -1,7 +1,7 @@
 Class {
 	#name : #OPXMITest,
 	#superclass : #TestCase,
-	#category : 'OP-XMI-Tests'
+	#category : #'OP-XMI-Tests'
 }
 
 { #category : #tests }
@@ -26,6 +26,6 @@ OPXMITest >> testReadWrite [
 	</container>
 </xmi:XMI>'.
     root := OPXMIReader readFrom: in readStream.
-    out := OPXMIWriter writeToString: root.
+    out := OPXMIWriter toString: root.
     self assert: (self normalized: in) equals: (self normalized: out)
 ]
