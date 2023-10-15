@@ -21,6 +21,6 @@ env:
 
 jobs:
   OP:
-    uses: OpenPonk/openponk/.github/workflows/nightly.yml@master
+    uses: OpenPonk/ci-scripts/.github/workflows/test-nightly.yml@master
     secrets:
       WORKFLOW_ACCESS_TOKEN: ${{ secrets.WORKFLOW_ACCESS_TOKEN }}

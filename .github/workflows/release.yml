@@ -13,4 +13,4 @@ env:
   
 jobs:
   OP:
-    uses: OpenPonk/openponk/.github/workflows/release.yml@master
+    uses: OpenPonk/ci-scripts/.github/workflows/test-release.yml@master
