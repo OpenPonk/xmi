@@ -2,12 +2,13 @@
 Baseline for https://github.com/OpenPonk/xmi
 "
 Class {
-	#name : #BaselineOfOPXMI,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfOPXMI
+	#name : 'BaselineOfOPXMI',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfOPXMI',
+	#package : 'BaselineOfOPXMI'
 }
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfOPXMI >> baseline: spec [
 
 	<baseline>
@@ -16,7 +17,14 @@ BaselineOfOPXMI >> baseline: spec [
 			baseline: 'XMLDOMVisitor'
 			with: [
 			spec repository: 'github://OpenPonk/xml-dom-visitor/repository' ].
-		spec package: 'OP-XMI' with: [ spec requires: #( 'XMLDOMVisitor' ) ].
+		spec baseline: 'XMLWriter' with: [
+			spec
+				loads: #( 'Core' );
+				repository:
+					'github://pharo-contributions/XML-XMLWriter:v3.1.1/src' ].
+		spec
+			package: 'OP-XMI'
+			with: [ spec requires: #( 'XMLDOMVisitor' 'XMLWriter' ) ].
 		spec
 			package: 'OP-XMI-GTExtensions'
 			with: [ spec requires: #( 'OP-XMI' ) ].
