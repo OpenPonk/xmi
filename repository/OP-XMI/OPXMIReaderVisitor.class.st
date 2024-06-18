@@ -1,6 +1,6 @@
 Class {
-	#name : #OPXMIReaderVisitor,
-	#superclass : #XMLDOMVisitor,
+	#name : 'OPXMIReaderVisitor',
+	#superclass : 'XMLDOMVisitor',
 	#instVars : [
 		'document',
 		'root',
@@ -8,22 +8,24 @@ Class {
 		'unresolved',
 		'refIdMapping'
 	],
-	#category : 'OP-XMI-Reader'
+	#category : 'OP-XMI-Reader',
+	#package : 'OP-XMI',
+	#tag : 'Reader'
 }
 
-{ #category : #factory }
+{ #category : 'factory' }
 OPXMIReaderVisitor >> attributeFor: aXMLAttribute [
 	(self isReferenceAttribute: aXMLAttribute)
 		ifTrue: [ ^ self referenceAttributeFor: aXMLAttribute ].
 	^ self valueAttributeFor: aXMLAttribute
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPXMIReaderVisitor >> elementAt: aXMLElement [
 	^ mapping at: aXMLElement
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 OPXMIReaderVisitor >> elementFor: aXMLElement [
 	(self isValueElement: aXMLElement)
 		ifTrue: [ ^ self valueElementFor: aXMLElement ].
@@ -32,7 +34,7 @@ OPXMIReaderVisitor >> elementFor: aXMLElement [
 	^ self objectElementFor: aXMLElement
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OPXMIReaderVisitor >> initialize [
 	super initialize.
 	mapping := Dictionary new.
@@ -40,7 +42,7 @@ OPXMIReaderVisitor >> initialize [
 	unresolved := OrderedCollection new
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 OPXMIReaderVisitor >> isReferenceAttribute: aXMLAttribute [
 	(aXMLAttribute parent isNotNil
 		and: [ aXMLAttribute value = (self elementAt: aXMLAttribute parent) xmiId ])
@@ -51,7 +53,7 @@ OPXMIReaderVisitor >> isReferenceAttribute: aXMLAttribute [
 		allSatisfy: [ :each | refIdMapping includesKey: each ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPXMIReaderVisitor >> isReferenceElement: aXMLElement [
 	| names |
 	aXMLElement hasAttributes not | aXMLElement hasElements
@@ -60,7 +62,7 @@ OPXMIReaderVisitor >> isReferenceElement: aXMLElement [
 	^ names allSatisfy: [ :each | #('xmi:idref' 'href' 'xmi:type') includes: each ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPXMIReaderVisitor >> isValueElement: aXMLElement [
 	aXMLElement hasAttributes
 		ifTrue: [ ^ false ].
@@ -69,7 +71,7 @@ OPXMIReaderVisitor >> isValueElement: aXMLElement [
 	^ aXMLElement nodes size = 1 and: [ aXMLElement nodes first isStringNode ]
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 OPXMIReaderVisitor >> objectElementFor: aXMLElement [
 	| element |
 	element := OPXMIObjectElement new
@@ -87,7 +89,7 @@ OPXMIReaderVisitor >> objectElementFor: aXMLElement [
 	^ element
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 OPXMIReaderVisitor >> referenceAttributeFor: aXMLAttribute [
 	^ OPXMIReferenceAttribute new
 		xmiName: aXMLAttribute name;
@@ -95,7 +97,7 @@ OPXMIReaderVisitor >> referenceAttributeFor: aXMLAttribute [
 		yourself
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 OPXMIReaderVisitor >> referenceElementFor: aXMLElement [
 	| el attribute |
 	(el := OPXMIReferenceElement new) xmiName: aXMLElement localName.
@@ -110,12 +112,12 @@ OPXMIReaderVisitor >> referenceElementFor: aXMLElement [
 	^ el
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 OPXMIReaderVisitor >> resolveAll [
 	unresolved do: #value
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 OPXMIReaderVisitor >> valueAttributeFor: aXMLAttribute [
 	^ OPXMIValueAttribute new
 		xmiName: aXMLAttribute name;
@@ -123,7 +125,7 @@ OPXMIReaderVisitor >> valueAttributeFor: aXMLAttribute [
 		yourself
 ]
 
-{ #category : #factory }
+{ #category : 'factory' }
 OPXMIReaderVisitor >> valueElementFor: aXMLElement [
 	^ OPXMIValueElement new
 		xmiName: aXMLElement localName;
@@ -131,14 +133,14 @@ OPXMIReaderVisitor >> valueElementFor: aXMLElement [
 		yourself
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 OPXMIReaderVisitor >> visitDocument: aDocument [
 	self visit: aDocument root.
 	self resolveAll.
 	^ self elementAt: aDocument root
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 OPXMIReaderVisitor >> visitElement: aXMLElement [
 	| element |
 	element := self elementFor: aXMLElement.

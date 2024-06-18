@@ -1,10 +1,12 @@
 Class {
-	#name : #OPXMIValueItemTest,
-	#superclass : #TestCase,
-	#category : 'OP-XMI-Tests'
+	#name : 'OPXMIValueItemTest',
+	#superclass : 'TestCase',
+	#category : 'OP-XMI-Tests',
+	#package : 'OP-XMI',
+	#tag : 'Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIValueItemTest >> testConstructorAttribute [
 	| element |
 	element := OPXMIValueAttribute xmiName: 'NAME' value: 'VALUE'.
@@ -12,7 +14,7 @@ OPXMIValueItemTest >> testConstructorAttribute [
 	self assert: element value equals: 'VALUE'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIValueItemTest >> testConstructorElement [
 	|element|
 	element := OPXMIValueElement xmiName: 'NAME' value: 'VALUE'.

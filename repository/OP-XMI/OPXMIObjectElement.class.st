@@ -2,35 +2,37 @@
 XMIObjectElement is an XML element that can contain other information items (XML elements and attributes).
 "
 Class {
-	#name : #OPXMIObjectElement,
-	#superclass : #OPXMIElement,
+	#name : 'OPXMIObjectElement',
+	#superclass : 'OPXMIElement',
 	#instVars : [
 		'containedItems'
 	],
-	#category : 'OP-XMI-DOM'
+	#category : 'OP-XMI-DOM',
+	#package : 'OP-XMI',
+	#tag : 'DOM'
 }
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 OPXMIObjectElement >> accept: aVisitor [
 	aVisitor visitObjectElement: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPXMIObjectElement >> containedItem [
 	^ containedItems ifEmpty: [ ^ nil ] ifNotEmpty: #first
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPXMIObjectElement >> containedItems [
 	^ containedItems
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPXMIObjectElement >> containedItems: aCollection [
 	containedItems := aCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPXMIObjectElement >> elementNamed: aName [
 	"return the first element with the given name"
 
@@ -40,7 +42,7 @@ OPXMIObjectElement >> elementNamed: aName [
 		ifNone: [ nil ]
 ]
 
-{ #category : #searching }
+{ #category : 'searching' }
 OPXMIObjectElement >> findElementWithXmiId: aXmiId [
 	self xmiId = aXmiId
 		ifTrue: [ ^ self ].
@@ -50,25 +52,25 @@ OPXMIObjectElement >> findElementWithXmiId: aXmiId [
 	^ nil
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OPXMIObjectElement >> initialize [
 	super initialize.
 	containedItems := OrderedCollection new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPXMIObjectElement >> isObjectElement [
 	^ true
 ]
 
-{ #category : #'accessing - shortcuts' }
+{ #category : 'accessing - shortcuts' }
 OPXMIObjectElement >> nameValue [
 	"Retrieve the value of <name> child element. Throw up if none is present."
 
 	^ (self containedItems detect: [ :each | each xmiName = #name ]) value
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 OPXMIObjectElement >> printOn: aStream [
 	aStream
 		<< 'XMIObjectElement(';
@@ -88,7 +90,7 @@ OPXMIObjectElement >> printOn: aStream [
 	aStream << ')'
 ]
 
-{ #category : #'accessing - shortcuts' }
+{ #category : 'accessing - shortcuts' }
 OPXMIObjectElement >> xmiId [
 	^ self containedItems
 		detect: [ :each | each xmiName = #xmi:id ]
@@ -96,7 +98,7 @@ OPXMIObjectElement >> xmiId [
 		ifNone: [ nil ]
 ]
 
-{ #category : #'accessing - shortcuts' }
+{ #category : 'accessing - shortcuts' }
 OPXMIObjectElement >> xmiType [
 	^ self containedItems
 		detect: [ :each | each xmiName = #xmi:type ]

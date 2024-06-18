@@ -1,31 +1,33 @@
 Class {
-	#name : #OPXMIReader,
-	#superclass : #Object,
+	#name : 'OPXMIReader',
+	#superclass : 'Object',
 	#instVars : [
 		'document'
 	],
-	#category : #'OP-XMI-Reader'
+	#category : 'OP-XMI-Reader',
+	#package : 'OP-XMI',
+	#tag : 'Reader'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPXMIReader class >> read: aStream mapping: aMapping [
 	aMapping at: 'result' put: aStream contents.
 	^ (self readFromMapping: aMapping) at: 'result'
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPXMIReader class >> readFrom: aStream [
 	^ self new readFrom: aStream
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPXMIReader class >> readFromMapping: aMapping [
 	"aMapping is a Dictionary of HREF URI -> XMI contents"
 
 	^ self new readFromMapping: aMapping
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPXMIReader >> readFrom: aStream [
 	| dom root |
 	dom := XMLDOMParser parse: aStream usingNamespaces: false.
@@ -33,7 +35,7 @@ OPXMIReader >> readFrom: aStream [
 	^ root
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPXMIReader >> readFromMapping: aMapping [
 	| graphs |
 	graphs := OrderedDictionary new.
@@ -42,7 +44,7 @@ OPXMIReader >> readFromMapping: aMapping [
 	^ graphs
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPXMIReader >> resolveHrefIn: aReferenceItem with: aMapping [
 	| parts ref |
 	aReferenceItem href ifNil: [ ^ self ].
@@ -61,7 +63,7 @@ OPXMIReader >> resolveHrefIn: aReferenceItem with: aMapping [
 	ref ifNotNil: [ aReferenceItem referencedElements: {ref} ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPXMIReader >> resolveHrefsIn: anElement with: aMapping [
 	anElement isReferenceElement
 		ifTrue: [ ^ self resolveHrefIn: anElement with: aMapping ].

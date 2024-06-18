@@ -1,6 +1,6 @@
-Extension { #name : #OPXMIReferenceAttribute }
+Extension { #name : 'OPXMIReferenceAttribute' }
 
-{ #category : #'*OP-XMI-GTExtensions' }
+{ #category : '*OP-XMI-GTExtensions' }
 OPXMIReferenceAttribute >> writeXMLOn: aWriter [
 	aWriter
 		tag: self xmiName

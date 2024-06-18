@@ -1,6 +1,6 @@
-Extension { #name : #OPXMIObjectElement }
+Extension { #name : 'OPXMIObjectElement' }
 
-{ #category : #'*OP-XMI-GTExtensions' }
+{ #category : '*OP-XMI-GTExtensions' }
 OPXMIObjectElement >> inspectionProperties [
 
 	"<inspectorPresentationOrder: 5 title: 'Tree'>"
@@ -17,7 +17,7 @@ OPXMIObjectElement >> inspectionProperties [
 		  yourself
 ]
 
-{ #category : #'*OP-XMI-GTExtensions' }
+{ #category : '*OP-XMI-GTExtensions' }
 OPXMIObjectElement >> writeXMLOn: aWriter [
 	aWriter
 		tag: self xmiName

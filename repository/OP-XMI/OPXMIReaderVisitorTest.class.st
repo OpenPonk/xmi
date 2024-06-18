@@ -1,19 +1,21 @@
 Class {
-	#name : #OPXMIReaderVisitorTest,
-	#superclass : #TestCase,
+	#name : 'OPXMIReaderVisitorTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'visitor',
 		'result'
 	],
-	#category : 'OP-XMI-Tests'
+	#category : 'OP-XMI-Tests',
+	#package : 'OP-XMI',
+	#tag : 'Tests'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPXMIReaderVisitorTest >> elementNamed: aName [
 	^ XMLElement named: aName
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPXMIReaderVisitorTest >> elementNamed: aName attributes: aCollection [
 	^ (XMLElement named: aName)
 		usesNamespaces: false;
@@ -21,20 +23,20 @@ OPXMIReaderVisitorTest >> elementNamed: aName attributes: aCollection [
 		yourself
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 OPXMIReaderVisitorTest >> setUp [
 	super setUp.
 	visitor := OPXMIReaderVisitor new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReaderVisitorTest >> testIsReferenceAttribute [
 	self deny: (visitor isReferenceAttribute: (XMLAttribute name: 'name' value: 'ID')).
 	visitor visitElement: (self elementNamed: 'whatever' attributes: {#xmi:id -> 'ID'}).
 	self assert: (visitor isReferenceAttribute: (XMLAttribute name: 'name' value: 'ID'))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReaderVisitorTest >> testIsReferenceAttributeMulti [
 	self
 		deny: (visitor isReferenceAttribute: (XMLAttribute name: 'name' value: 'ID1 ID2')).
@@ -44,19 +46,19 @@ OPXMIReaderVisitorTest >> testIsReferenceAttributeMulti [
 		assert: (visitor isReferenceAttribute: (XMLAttribute name: 'name' value: 'ID1 ID2'))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReaderVisitorTest >> testIsReferenceAttributeNotXmi [
 	self deny: (visitor isReferenceAttribute: (XMLAttribute name: 'xmi:idref' value: 'value')).
 	self deny: (visitor isReferenceAttribute: (XMLAttribute name: 'xmi:id' value: 'value'))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReaderVisitorTest >> testIsReferenceElementHref [
 	self
 		assert: (visitor isReferenceElement: (self elementNamed: 'el' attributes: {#href -> #content}))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReaderVisitorTest >> testIsReferenceElementHref2 [
 	self
 		assert:
@@ -69,19 +71,19 @@ OPXMIReaderVisitorTest >> testIsReferenceElementHref2 [
 							#href -> #content}))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReaderVisitorTest >> testIsReferenceElementIdRef [
 	self
 		assert: (visitor isReferenceElement: (self elementNamed: 'el' attributes: {#xmi:idref -> #value}))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReaderVisitorTest >> testIsReferenceElementNot [
 	self
 		deny: (visitor isReferenceElement: (self elementNamed: 'el' attributes: {#other -> #sth}))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReaderVisitorTest >> testIsValueElement [
 	self
 		assert:
@@ -93,12 +95,12 @@ OPXMIReaderVisitorTest >> testIsValueElement [
 						yourself))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReaderVisitorTest >> testIsValueElementNot [
 	self deny: (visitor isValueElement: (XMLElement name: 'el' attributes: {#key -> #value}))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReaderVisitorTest >> testIsValueElementNot2 [
 	self
 		deny:
@@ -109,14 +111,14 @@ OPXMIReaderVisitorTest >> testIsValueElementNot2 [
 						yourself))
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReaderVisitorTest >> testObjectElement [
 	result := visitor objectElementFor: (self elementNamed: 'el').
 	self assert: result isObjectElement.
 	self assert: result xmiName equals: 'el'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReaderVisitorTest >> testObjectElementWithAttributes [
 	result := visitor
 		objectElementFor: (self elementNamed: 'el' attributes: {#name -> #value}).
@@ -127,7 +129,7 @@ OPXMIReaderVisitorTest >> testObjectElementWithAttributes [
 	self assert: result containedItems first value equals: 'value'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReaderVisitorTest >> testReferenceAttribute [
 	| target reference attribute |
 	target := self elementNamed: 'Target' attributes: {#xmi:id -> #target}.
@@ -143,7 +145,7 @@ OPXMIReaderVisitorTest >> testReferenceAttribute [
 	self assert: attribute referencedElement equals: (visitor elementAt: target)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReaderVisitorTest >> testReferenceAttributeMulti [
 	| target1 target2 reference attribute |
 	target1 := self elementNamed: 'Target' attributes: {#xmi:id -> #target1}.
@@ -162,7 +164,7 @@ OPXMIReaderVisitorTest >> testReferenceAttributeMulti [
 	self assert: attribute referencedElements second equals: (visitor elementAt: target2)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReaderVisitorTest >> testReferenceElement [
 	| target reference |
 	target := self elementNamed: 'Target' attributes: {#xmi:id -> #target}.
@@ -176,7 +178,7 @@ OPXMIReaderVisitorTest >> testReferenceElement [
 	self assert: result referencedElement equals: (visitor elementAt: target)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReaderVisitorTest >> testReferenceElementHrefUnresolved [
 	| reference |
 	reference := self
@@ -190,7 +192,7 @@ OPXMIReaderVisitorTest >> testReferenceElementHrefUnresolved [
 	self assert: result referencedElements size equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReaderVisitorTest >> testReferenceElementHrefUnresolvedWithType [
 	| reference |
 	reference := self
@@ -207,7 +209,7 @@ OPXMIReaderVisitorTest >> testReferenceElementHrefUnresolvedWithType [
 	self assert: result referencedElements size equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReaderVisitorTest >> testValueAttribute [
 	result := visitor valueAttributeFor: (XMLAttribute name: 'name' value: 'value').
 	self assert: result isValueAttribute.
@@ -215,7 +217,7 @@ OPXMIReaderVisitorTest >> testValueAttribute [
 	self assert: result value equals: 'value'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReaderVisitorTest >> testValueElement [
 	result := visitor
 		valueElementFor:
@@ -228,7 +230,7 @@ OPXMIReaderVisitorTest >> testValueElement [
 	self assert: result value equals: 'content'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReaderVisitorTest >> testVisitObjectElementWithChild [
 	| node |
 	node := (self elementNamed: 'parent' attributes: {#xmi:type -> 'type'})

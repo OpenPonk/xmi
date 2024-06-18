@@ -2,15 +2,17 @@
 XMIValueAttribute is simply an XML attribute with a value.
 "
 Class {
-	#name : #OPXMIValueAttribute,
-	#superclass : #OPXMIAttribute,
+	#name : 'OPXMIValueAttribute',
+	#superclass : 'OPXMIAttribute',
 	#instVars : [
 		'value'
 	],
-	#category : 'OP-XMI-DOM'
+	#category : 'OP-XMI-DOM',
+	#package : 'OP-XMI',
+	#tag : 'DOM'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPXMIValueAttribute class >> xmiName: aName value: aValue [
 	^ self new
 		xmiName: aName;
@@ -18,7 +20,7 @@ OPXMIValueAttribute class >> xmiName: aName value: aValue [
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 OPXMIValueAttribute >> = aValueAttribute [
 	self species = aValueAttribute species
 		ifFalse: [ ^ false ].
@@ -29,22 +31,22 @@ OPXMIValueAttribute >> = aValueAttribute [
 	^ true
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 OPXMIValueAttribute >> accept: aVisitor [
 	aVisitor visitValueAttribute: self
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 OPXMIValueAttribute >> hash [
 	^ self species hash bitXor: (self xmiName hash bitXor: self value hash)
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPXMIValueAttribute >> isValueAttribute [
 	^ true
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 OPXMIValueAttribute >> printOn: aStream [
 	aStream
 		<< 'XMIValueAttribute(';
@@ -54,12 +56,12 @@ OPXMIValueAttribute >> printOn: aStream [
 		<< '")'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPXMIValueAttribute >> value [
 	^ value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPXMIValueAttribute >> value: aString [
 	value := aString
 ]

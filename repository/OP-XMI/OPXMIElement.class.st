@@ -1,28 +1,30 @@
 Class {
-	#name : #OPXMIElement,
-	#superclass : #OPXMIInfoItems,
+	#name : 'OPXMIElement',
+	#superclass : 'OPXMIInfoItems',
 	#instVars : [
 		'xmiName'
 	],
-	#category : 'OP-XMI-DOM'
+	#category : 'OP-XMI-DOM',
+	#package : 'OP-XMI',
+	#tag : 'DOM'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPXMIElement class >> isAbstract [
 	^ self = OPXMIElement
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPXMIElement >> isElement [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPXMIElement >> xmiName [
 	^ xmiName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPXMIElement >> xmiName: aString [
 	xmiName := aString
 ]

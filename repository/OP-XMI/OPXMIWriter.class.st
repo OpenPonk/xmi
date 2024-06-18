@@ -1,10 +1,12 @@
 Class {
-	#name : #OPXMIWriter,
-	#superclass : #Object,
-	#category : #'OP-XMI-Writer'
+	#name : 'OPXMIWriter',
+	#superclass : 'Object',
+	#category : 'OP-XMI-Writer',
+	#package : 'OP-XMI',
+	#tag : 'Writer'
 }
 
-{ #category : #writing }
+{ #category : 'writing' }
 OPXMIWriter class >> toString: anXMI [
 
 	| visitor |
@@ -13,7 +15,7 @@ OPXMIWriter class >> toString: anXMI [
 	^ visitor contents
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 OPXMIWriter class >> write: anXMI toStream: aStream [
 
 	aStream << (self toString: anXMI)

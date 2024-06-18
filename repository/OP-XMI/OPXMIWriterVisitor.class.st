@@ -1,18 +1,20 @@
 Class {
-	#name : #OPXMIWriterVisitor,
-	#superclass : #Object,
+	#name : 'OPXMIWriterVisitor',
+	#superclass : 'Object',
 	#instVars : [
 		'writer'
 	],
-	#category : #'OP-XMI-Writer'
+	#category : 'OP-XMI-Writer',
+	#package : 'OP-XMI',
+	#tag : 'Writer'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPXMIWriterVisitor >> contents [
 	^ writer contents
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OPXMIWriterVisitor >> initialize [
 	super initialize.
 	writer := XMLWriter new.
@@ -21,12 +23,12 @@ OPXMIWriterVisitor >> initialize [
 	writer xml encoding: 'UTF-8'
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 OPXMIWriterVisitor >> visit: anElement [
 	anElement accept: self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 OPXMIWriterVisitor >> visitObjectElement: anObjectElement [
 	"2a:XMIObjectElement ::= ( ""<"" 2k:QName 2d:XMIAttributes ""/>"" )
 | ( ""<"" 2k:QName 2d:XMIAttributes "">""
@@ -46,14 +48,14 @@ OPXMIWriterVisitor >> visitObjectElement: anObjectElement [
 			anObjectElement containedItems select: #isElement thenDo: [ :each | self visit: each ] ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 OPXMIWriterVisitor >> visitReferenceAttribute: aReferenceAttribute [
 	"2j:XMIReferenceAttribute ::= //xmiName// ""=’"" ( //refId// )+ ""’"
 
 	writer writeAttributeName: aReferenceAttribute xmiName value: ((aReferenceAttribute referencedElements collect: #xmiId) joinUsing: ' ')
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 OPXMIWriterVisitor >> visitReferenceElement: aReferenceElement [
 	"
 2c:XMIReferenceElement::= ""<"" //xmiName// 2l:LinkAttribs ""/>""
@@ -74,14 +76,14 @@ Additionally every modeling tool adds xmi:type information, even though the spec
 				ifNotNil: [ "href" writer writeAttributeName: 'href' value: aReferenceElement href ] ]
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 OPXMIWriterVisitor >> visitValueAttribute: aValueAttribute [
 	"2i:XMIValueAttribute ::= //xmiName// ""=’"" value ""’"""
 
 	writer writeAttributeName: aValueAttribute xmiName value: aValueAttribute value
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 OPXMIWriterVisitor >> visitValueElement: aValueElement [
 	"2b:XMIValueElement ::= ( ""<"" //xmiName// "">"" //value//
 ""</"" //xmiName// "">"" )
@@ -92,7 +94,7 @@ OPXMIWriterVisitor >> visitValueElement: aValueElement [
 	writer tag: aValueElement xmiName with: aValueElement value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPXMIWriterVisitor >> writer [
 	^ writer
 ]

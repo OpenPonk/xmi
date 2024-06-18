@@ -1,1 +1,1 @@
-Package { #name : #'OP-XMI-GTExtensions' }
+Package { #name : 'OP-XMI-GTExtensions' }

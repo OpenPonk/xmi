@@ -2,15 +2,17 @@
 XMIValueElement is an XML element that can have a value, but cannot contain other XML elements or attributes.
 "
 Class {
-	#name : #OPXMIValueElement,
-	#superclass : #OPXMIElement,
+	#name : 'OPXMIValueElement',
+	#superclass : 'OPXMIElement',
 	#instVars : [
 		'value'
 	],
-	#category : 'OP-XMI-DOM'
+	#category : 'OP-XMI-DOM',
+	#package : 'OP-XMI',
+	#tag : 'DOM'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPXMIValueElement class >> xmiName: aName value: aValue [
 	^ self new
 		xmiName: aName;
@@ -18,22 +20,22 @@ OPXMIValueElement class >> xmiName: aName value: aValue [
 		yourself
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 OPXMIValueElement >> accept: aVisitor [
 	aVisitor visitValueElement: self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPXMIValueElement >> isValueElement [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPXMIValueElement >> value [
 	^ value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPXMIValueElement >> value: aString [
 	value := aString
 ]

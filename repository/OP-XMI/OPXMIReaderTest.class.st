@@ -1,10 +1,12 @@
 Class {
-	#name : #OPXMIReaderTest,
-	#superclass : #TestCase,
-	#category : 'OP-XMI-Tests'
+	#name : 'OPXMIReaderTest',
+	#superclass : 'TestCase',
+	#category : 'OP-XMI-Tests',
+	#package : 'OP-XMI',
+	#tag : 'Tests'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPXMIReaderTest >> fileAAContents [
 	^ '<container>
 	<aaItem xmi:id="AAX">
@@ -13,7 +15,7 @@ OPXMIReaderTest >> fileAAContents [
 </container>'
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPXMIReaderTest >> fileBBContents [
 	^ '<container>
 	<bbItem xmi:id="BBX">
@@ -22,14 +24,14 @@ OPXMIReaderTest >> fileBBContents [
 </container>'
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPXMIReaderTest >> fileCCContents [
 	^ '<container>
 	<ccItem xmi:id="CCX" />
 </container>'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReaderTest >> testReadFromMapping [
 	| mapping result aaItem bbItem ccItem |
 	"ordered to have both forward (B->C) and backward (B<-A) lookup"
@@ -45,7 +47,7 @@ OPXMIReaderTest >> testReadFromMapping [
 	self assert: bbItem containedItems second referencedElement equals: ccItem
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReaderTest >> testReadFromTypedMapping [
 	| mapping result uml type |
 	mapping := OrderedDictionary
@@ -57,7 +59,7 @@ OPXMIReaderTest >> testReadFromTypedMapping [
 	self assert: uml containedItems first referencedElement equals: type
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReaderTest >> testResolveHref [
 	| reference map someFileXmi |
 	reference := OPXMIReferenceElement new
@@ -78,14 +80,14 @@ OPXMIReaderTest >> testResolveHref [
 	self assert: reference referencedElement equals: someFileXmi containedItem
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPXMIReaderTest >> umlTypedElementContents [
 	^ '<wrap><ownedAttribute>
 	<type xmi:type="uml:PrimitiveType" href="PrimitiveTypes.xmi#String" />
 </ownedAttribute></wrap>'
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPXMIReaderTest >> umlTypesContents [
 	^ '<uml:Package>
 		<packagedElement xmi:type="uml:PrimitiveType" xmi:id="String" name="String" />

@@ -1,19 +1,21 @@
 Class {
-	#name : #OPXMIReaderVisitorExtraRulesTest,
-	#superclass : #TestCase,
+	#name : 'OPXMIReaderVisitorExtraRulesTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'visitor',
 		'result'
 	],
-	#category : 'OP-XMI-Tests'
+	#category : 'OP-XMI-Tests',
+	#package : 'OP-XMI',
+	#tag : 'Tests'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPXMIReaderVisitorExtraRulesTest >> elementNamed: aName [
 	^ XMLElement named: aName
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPXMIReaderVisitorExtraRulesTest >> elementNamed: aName attributes: aCollection [
 	^ (XMLElement named: aName)
 		usesNamespaces: false;
@@ -21,13 +23,13 @@ OPXMIReaderVisitorExtraRulesTest >> elementNamed: aName attributes: aCollection 
 		yourself
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 OPXMIReaderVisitorExtraRulesTest >> setUp [
 	super setUp.
 	visitor := OPXMIReaderVisitor new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReaderVisitorExtraRulesTest >> testNoSelfReference [
 	"<packagedElement xmi:type=""uml:Package"" xmi:id=""Classification"" name=""Classification"">
 the name attribute should be ValueAttribute because it refers to itself"
@@ -46,7 +48,7 @@ the name attribute should be ValueAttribute because it refers to itself"
 	self assert: result containedItems last isValueAttribute
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReaderVisitorExtraRulesTest >> testNoSelfReferenceIsReferenceAttributeNot [
 	"goes with testNoSelfReference"
 
