@@ -1,10 +1,12 @@
 Class {
-	#name : #OPXMIObjectElementTest,
-	#superclass : #TestCase,
-	#category : 'OP-XMI-Tests'
+	#name : 'OPXMIObjectElementTest',
+	#superclass : 'TestCase',
+	#category : 'OP-XMI-Tests',
+	#package : 'OP-XMI',
+	#tag : 'Tests'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPXMIObjectElementTest >> nestedObjects [
 	^ OPXMIObjectElement new
 		xmiName: 'aaa';
@@ -32,7 +34,7 @@ OPXMIObjectElementTest >> nestedObjects [
 								value: 'DDD'}}}
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIObjectElementTest >> testElementNamed [
 	| el |
 	(el := OPXMIObjectElement new)
@@ -42,7 +44,7 @@ OPXMIObjectElementTest >> testElementNamed [
 	self assert: (el elementNamed: 'none') equals: nil
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIObjectElementTest >> testFindElementWithXmiId1 [
 	| root result |
 	root := self nestedObjects.
@@ -50,7 +52,7 @@ OPXMIObjectElementTest >> testFindElementWithXmiId1 [
 	self assert: result equals: root
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIObjectElementTest >> testFindElementWithXmiId2 [
 	| root result |
 	root := self nestedObjects.
@@ -58,7 +60,7 @@ OPXMIObjectElementTest >> testFindElementWithXmiId2 [
 	self assert: result xmiName equals: 'bbb'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIObjectElementTest >> testFindElementWithXmiId3 [
 	| root result |
 	root := self nestedObjects.
@@ -66,7 +68,7 @@ OPXMIObjectElementTest >> testFindElementWithXmiId3 [
 	self assert: result xmiName equals: 'ccc'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIObjectElementTest >> testFindElementWithXmiId4 [
 	| root result |
 	root := self nestedObjects.
@@ -74,7 +76,7 @@ OPXMIObjectElementTest >> testFindElementWithXmiId4 [
 	self assert: result xmiName equals: 'ddd'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIObjectElementTest >> testFindElementWithXmiId5 [
 	| root result |
 	root := self nestedObjects.
@@ -82,7 +84,7 @@ OPXMIObjectElementTest >> testFindElementWithXmiId5 [
 	self assert: result equals: nil
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIObjectElementTest >> testId [
 	| element |
 	element := OPXMIObjectElement new.
@@ -95,7 +97,7 @@ OPXMIObjectElementTest >> testId [
 	self assert: element xmiId equals: 'ID'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIObjectElementTest >> testNameValue [
 	| element |
 	element := OPXMIObjectElement new
@@ -104,7 +106,7 @@ OPXMIObjectElementTest >> testNameValue [
 	self should: [ OPXMIObjectElement new nameValue ] raise: NotFound
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIObjectElementTest >> testType [
 	| element |
 	element := OPXMIObjectElement new.

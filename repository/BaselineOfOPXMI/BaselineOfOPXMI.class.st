@@ -2,12 +2,13 @@
 Baseline for https://github.com/OpenPonk/xmi
 "
 Class {
-	#name : #BaselineOfOPXMI,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfOPXMI
+	#name : 'BaselineOfOPXMI',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfOPXMI',
+	#package : 'BaselineOfOPXMI'
 }
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfOPXMI >> baseline: spec [
 
 	<baseline>

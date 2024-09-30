@@ -2,16 +2,18 @@
 XMIReferenceAttribute is an XML attribute that references an XMIElement by id.
 "
 Class {
-	#name : #OPXMIReferenceAttribute,
-	#superclass : #OPXMIAttribute,
+	#name : 'OPXMIReferenceAttribute',
+	#superclass : 'OPXMIAttribute',
 	#instVars : [
 		'referencedElements',
 		'href'
 	],
-	#category : 'OP-XMI-DOM'
+	#category : 'OP-XMI-DOM',
+	#package : 'OP-XMI',
+	#tag : 'DOM'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 OPXMIReferenceAttribute class >> xmiName: aName referencedElements: aCollection [
 	^ self new
 		xmiName: aName;
@@ -19,33 +21,33 @@ OPXMIReferenceAttribute class >> xmiName: aName referencedElements: aCollection 
 		yourself
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 OPXMIReferenceAttribute >> accept: aVisitor [
 	aVisitor visitReferenceAttribute: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPXMIReferenceAttribute >> href [
 	^ href
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPXMIReferenceAttribute >> href: anObject [
 	href := anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 OPXMIReferenceAttribute >> initialize [
 	super initialize.
 	referencedElements := OrderedCollection new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPXMIReferenceAttribute >> isReferenceAttribute [
 	^ true
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 OPXMIReferenceAttribute >> printOn: aStream [
 	aStream
 		<< 'XMIReferenceAttribute(';
@@ -53,17 +55,17 @@ OPXMIReferenceAttribute >> printOn: aStream [
 		<< '")'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPXMIReferenceAttribute >> referencedElement [
 	^ referencedElements ifEmpty: [ nil ] ifNotEmpty: [ referencedElements first ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPXMIReferenceAttribute >> referencedElements [
 	^ referencedElements
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 OPXMIReferenceAttribute >> referencedElements: aCollection [
 	referencedElements := aCollection
 ]

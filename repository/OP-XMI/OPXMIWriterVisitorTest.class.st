@@ -1,19 +1,21 @@
 Class {
-	#name : #OPXMIWriterVisitorTest,
-	#superclass : #TestCase,
+	#name : 'OPXMIWriterVisitorTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'visitor'
 	],
-	#category : 'OP-XMI-Tests'
+	#category : 'OP-XMI-Tests',
+	#package : 'OP-XMI',
+	#tag : 'Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 OPXMIWriterVisitorTest >> setUp [
 	super setUp.
 	visitor := OPXMIWriterVisitor new
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIWriterVisitorTest >> testVisitObjectElement [
 	visitor
 		visitObjectElement:
@@ -35,7 +37,7 @@ OPXMIWriterVisitorTest >> testVisitObjectElement [
 </Object>'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIWriterVisitorTest >> testVisitReferenceAttribute [
 	visitor writer
 		tag: 'outer'
@@ -53,7 +55,7 @@ OPXMIWriterVisitorTest >> testVisitReferenceAttribute [
 	self assert: visitor contents lines last equals: '<outer key="AAA"/>'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIWriterVisitorTest >> testVisitReferenceElement [
 	visitor
 		visitReferenceElement:
@@ -69,7 +71,7 @@ OPXMIWriterVisitorTest >> testVisitReferenceElement [
 	self assert: visitor contents lines last equals: '<name xmi:idref="AAA"/>'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIWriterVisitorTest >> testVisitReferenceElementHref [
 	visitor
 		visitReferenceElement:
@@ -79,7 +81,7 @@ OPXMIWriterVisitorTest >> testVisitReferenceElementHref [
 	self assert: visitor contents lines last equals: '<name href="http://UNIVERSE"/>'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIWriterVisitorTest >> testVisitReferenceElementHrefType [
 	visitor
 		visitReferenceElement:
@@ -92,7 +94,7 @@ OPXMIWriterVisitorTest >> testVisitReferenceElementHrefType [
 		equals: '<name xmi:type="uml:PrimitiveType" href="http://UNIVERSE"/>'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIWriterVisitorTest >> testVisitValueAttribute [
 	visitor writer
 		tag: 'outer'
@@ -104,13 +106,13 @@ OPXMIWriterVisitorTest >> testVisitValueAttribute [
 	self assert: visitor contents lines last equals: '<outer key="VALUE"/>'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIWriterVisitorTest >> testVisitValueElement [
 	visitor visitValueElement: (OPXMIValueElement new xmiName: 'name'; value: 'VALUE').
 	self assert: visitor contents lines last equals: '<name>VALUE</name>'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIWriterVisitorTest >> testVisitXmiElement [
 	visitor visitObjectElement: (OPXMIObjectElement new xmiName: 'XMI').
 	self

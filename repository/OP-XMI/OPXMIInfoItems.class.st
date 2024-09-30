@@ -1,55 +1,57 @@
 Class {
-	#name : #OPXMIInfoItems,
-	#superclass : #Object,
-	#category : 'OP-XMI-DOM'
+	#name : 'OPXMIInfoItems',
+	#superclass : 'Object',
+	#category : 'OP-XMI-DOM',
+	#package : 'OP-XMI',
+	#tag : 'DOM'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPXMIInfoItems class >> isAbstract [
 	^ self = OPXMIInfoItems
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPXMIInfoItems >> isAttribute [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPXMIInfoItems >> isElement [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPXMIInfoItems >> isObjectElement [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPXMIInfoItems >> isReferenceAttribute [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPXMIInfoItems >> isReferenceElement [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPXMIInfoItems >> isReferenceItem [
 	^ self isReferenceAttribute | self isReferenceElement
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPXMIInfoItems >> isValueAttribute [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPXMIInfoItems >> isValueElement [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 OPXMIInfoItems >> isValueItem [
 	^ self isValueAttribute | self isValueElement
 ]

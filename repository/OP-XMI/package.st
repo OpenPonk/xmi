@@ -1,1 +1,1 @@
-Package { #name : #'OP-XMI' }
+Package { #name : 'OP-XMI' }

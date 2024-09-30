@@ -1,18 +1,20 @@
 Class {
-	#name : #OPXMLPrettyPrintingWriterFormatter,
-	#superclass : #XMLPrettyPrintingWriterFormatter,
+	#name : 'OPXMLPrettyPrintingWriterFormatter',
+	#superclass : 'XMLPrettyPrintingWriterFormatter',
 	#instVars : [
 		'lineBreak'
 	],
-	#category : #'OP-XMI-Writer'
+	#category : 'OP-XMI-Writer',
+	#package : 'OP-XMI',
+	#tag : 'Writer'
 }
 
-{ #category : #writing }
+{ #category : 'writing' }
 OPXMLPrettyPrintingWriterFormatter >> lineBreak: aCharacterOrString [
 	lineBreak := aCharacterOrString asString
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 OPXMLPrettyPrintingWriterFormatter >> writeLineBreak [
 	self writer atBeginning
 		ifFalse: [ self writer nextPutAll: lineBreak.
@@ -20,7 +22,7 @@ OPXMLPrettyPrintingWriterFormatter >> writeLineBreak [
 				ifTrue: [ self writeIndent ] ]
 ]
 
-{ #category : #writing }
+{ #category : 'writing' }
 OPXMLPrettyPrintingWriterFormatter >> writer: aWriter [
 	super writer: aWriter.
 	lineBreak ifNil: [ lineBreak := aWriter lineBreak ]

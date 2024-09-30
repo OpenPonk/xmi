@@ -1,10 +1,12 @@
 Class {
-	#name : #OPXMIReferenceItemTest,
-	#superclass : #TestCase,
-	#category : 'OP-XMI-Tests'
+	#name : 'OPXMIReferenceItemTest',
+	#superclass : 'TestCase',
+	#category : 'OP-XMI-Tests',
+	#package : 'OP-XMI',
+	#tag : 'Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReferenceItemTest >> testConstructorAttribute [
 	| element |
 	element := OPXMIReferenceAttribute xmiName: 'NAME' referencedElements: #(1).
@@ -12,7 +14,7 @@ OPXMIReferenceItemTest >> testConstructorAttribute [
 	self assert: element referencedElements equals: #(1)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMIReferenceItemTest >> testConstructorElement [
 	| element |
 	element := OPXMIReferenceElement xmiName: 'NAME' referencedElements: #(1).

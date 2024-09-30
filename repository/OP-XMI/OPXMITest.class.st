@@ -1,17 +1,19 @@
 Class {
-	#name : #OPXMITest,
-	#superclass : #TestCase,
-	#category : 'OP-XMI-Tests'
+	#name : 'OPXMITest',
+	#superclass : 'TestCase',
+	#category : 'OP-XMI-Tests',
+	#package : 'OP-XMI',
+	#tag : 'Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMITest >> normalized: aString [
 	^ (aString copyReplaceAll: String cr with: String lf)
 		copyReplaceAll: String tab
 		with: '    '
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 OPXMITest >> testReadWrite [
     | in root out |
     in := '<?xml version="1.0" encoding="UTF-8"?>
@@ -26,6 +28,6 @@ OPXMITest >> testReadWrite [
 	</container>
 </xmi:XMI>'.
     root := OPXMIReader readFrom: in readStream.
-    out := OPXMIWriter writeToString: root.
+    out := OPXMIWriter toString: root.
     self assert: (self normalized: in) equals: (self normalized: out)
 ]
