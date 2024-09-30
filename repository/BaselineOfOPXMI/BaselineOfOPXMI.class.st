@@ -21,7 +21,7 @@ BaselineOfOPXMI >> baseline: spec [
 			spec
 				loads: #( 'Core' );
 				repository:
-					'github://pharo-contributions/XML-XMLWriter:v3.1.1' ].
+					'github://pharo-contributions/XML-XMLWriter:v3.1.x' ].
 		spec
 			package: 'OP-XMI'
 			with: [ spec requires: #( 'XMLDOMVisitor' 'XMLWriter' ) ].
