@@ -16,12 +16,12 @@ BaselineOfOPXMI >> baseline: spec [
 		spec
 			baseline: 'XMLDOMVisitor'
 			with: [
-			spec repository: 'github://OpenPonk/xml-dom-visitor/repository' ].
+			spec repository: 'github://OpenPonk/xml-dom-visitor' ].
 		spec baseline: 'XMLWriter' with: [
 			spec
 				loads: #( 'Core' );
 				repository:
-					'github://pharo-contributions/XML-XMLWriter:v3.1.1/src' ].
+					'github://pharo-contributions/XML-XMLWriter:v3.1.1' ].
 		spec
 			package: 'OP-XMI'
 			with: [ spec requires: #( 'XMLDOMVisitor' 'XMLWriter' ) ].
