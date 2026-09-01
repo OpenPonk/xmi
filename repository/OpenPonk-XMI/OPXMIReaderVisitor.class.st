@@ -1,9 +1,10 @@
+"
+I am an XML DOM visitor responsible for traversing a parsed XML tree and converting it into a hierarchy of OPXMI information items, specifically tracking and resolving reference identifiers and external hrefs.
+"
 Class {
 	#name : 'OPXMIReaderVisitor',
 	#superclass : 'XMLDOMVisitor',
 	#instVars : [
-		'document',
-		'root',
 		'mapping',
 		'unresolved',
 		'refIdMapping'
@@ -64,11 +65,11 @@ OPXMIReaderVisitor >> isReferenceElement: aXMLElement [
 
 { #category : 'testing' }
 OPXMIReaderVisitor >> isValueElement: aXMLElement [
-	aXMLElement hasAttributes
-		ifTrue: [ ^ false ].
-	aXMLElement nodes size = 0
-		ifTrue: [ ^ true ].
-	^ aXMLElement nodes size = 1 and: [ aXMLElement nodes first isStringNode ]
+
+	aXMLElement hasAttributes ifTrue: [ ^ false ].
+	aXMLElement nodes ifEmpty: [ ^ true ].
+	^ aXMLElement nodes size = 1 and: [
+		  aXMLElement nodes first isStringNode ]
 ]
 
 { #category : 'factory' }
@@ -99,13 +100,16 @@ OPXMIReaderVisitor >> referenceAttributeFor: aXMLAttribute [
 
 { #category : 'factory' }
 OPXMIReaderVisitor >> referenceElementFor: aXMLElement [
+
 	| el attribute |
 	(el := OPXMIReferenceElement new) xmiName: aXMLElement localName.
-	attribute := aXMLElement attributeNodes
-		detect: [ :each | each name = 'href' | (each name = 'xmi:idref') ].
+	attribute := aXMLElement attributeNodes detect: [ :each |
+		             each name = 'href' or: [ each name = 'xmi:idref' ] ].
 	attribute name = 'href'
 		ifTrue: [ el href: attribute value ]
-		ifFalse: [ unresolved add: [ el referencedElements: {refIdMapping at: attribute value} ] ].
+		ifFalse: [
+				unresolved add: [
+					el referencedElements: { (refIdMapping at: attribute value) } ] ].
 	aXMLElement attributeNodes
 		detect: [ :each | each name = 'xmi:type' ]
 		ifFound: [ :typeAttrib | el xmiType: typeAttrib value ].

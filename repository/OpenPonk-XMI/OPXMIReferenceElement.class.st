@@ -1,5 +1,5 @@
 "
-XMIReferenceElement is an XML element with an idref or href attribute that references another XMIElement, by id, URI, or URI and XPointer.
+I represent an XMI XML element utilizing an `idref` or `href` attribute to reference another XMI element by identifier, URI, or URI combined with an XPointer.
 "
 Class {
 	#name : 'OPXMIReferenceElement',

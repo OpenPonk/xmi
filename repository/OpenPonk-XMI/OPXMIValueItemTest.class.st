@@ -1,3 +1,6 @@
+"
+I am a unit test class verifying the instantiation, initialization, and value assignment of XMI value attributes and elements.
+"
 Class {
 	#name : 'OPXMIValueItemTest',
 	#superclass : 'TestCase',

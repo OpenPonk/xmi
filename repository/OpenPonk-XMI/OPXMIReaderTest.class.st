@@ -1,3 +1,6 @@
+"
+I am a unit test class verifying the functionality of OPXMIReader, focusing on href resolution across document boundaries and typed mapping initialization.
+"
 Class {
 	#name : 'OPXMIReaderTest',
 	#superclass : 'TestCase',

@@ -1,3 +1,6 @@
+"
+I am the abstract base class for XMI elements. I hold the XMI name of the element and dispatch XML writing operations.
+"
 Class {
 	#name : 'OPXMIElement',
 	#superclass : 'OPXMIInfoItems',

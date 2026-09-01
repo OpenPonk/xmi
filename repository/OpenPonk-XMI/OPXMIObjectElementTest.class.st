@@ -1,3 +1,6 @@
+"
+I am a unit test class verifying the behavior of OPXMIObjectElement, particularly focusing on identifier lookups, nested containment, and property resolution.
+"
 Class {
 	#name : 'OPXMIObjectElementTest',
 	#superclass : 'TestCase',

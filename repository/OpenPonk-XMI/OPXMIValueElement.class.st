@@ -1,5 +1,5 @@
 "
-XMIValueElement is an XML element that can have a value, but cannot contain other XML elements or attributes.
+I represent an XMI XML element containing a scalar string value, strictly prohibiting nested elements or attributes.
 "
 Class {
 	#name : 'OPXMIValueElement',
@@ -30,7 +30,7 @@ OPXMIValueElement >> isValueElement [
 	^ true
 ]
 
-{ #category : 'accessing' }
+{ #category : 'evaluating' }
 OPXMIValueElement >> value [
 	^ value
 ]

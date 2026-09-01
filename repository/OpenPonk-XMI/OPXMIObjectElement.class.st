@@ -1,5 +1,5 @@
 "
-XMIObjectElement is an XML element that can contain other information items (XML elements and attributes).
+I represent a complex XMI XML element capable of containing other information items, such as nested XML elements and attributes. I map directly to complex domain model objects during XMI deserialization.
 "
 Class {
 	#name : 'OPXMIObjectElement',

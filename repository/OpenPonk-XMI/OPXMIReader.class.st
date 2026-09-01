@@ -1,9 +1,9 @@
+"
+I am the main entry point for reading and parsing XMI documents into an object-oriented representation of XMI information items. I handle reference resolution across documents and type mappings.
+"
 Class {
 	#name : 'OPXMIReader',
 	#superclass : 'Object',
-	#instVars : [
-		'document'
-	],
 	#category : 'OpenPonk-XMI-Reader',
 	#package : 'OpenPonk-XMI',
 	#tag : 'Reader'

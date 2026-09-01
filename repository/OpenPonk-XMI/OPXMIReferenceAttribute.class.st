@@ -1,5 +1,5 @@
 "
-XMIReferenceAttribute is an XML attribute that references an XMIElement by id.
+I represent an XMI XML attribute that references one or more XMI elements by their identifier (`xmi:idref`).
 "
 Class {
 	#name : 'OPXMIReferenceAttribute',
