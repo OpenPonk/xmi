@@ -1,3 +1,6 @@
+"
+I am a unit test class verifying the accurate generation of XML structures from OPXMI objects by OPXMIWriterVisitor.
+"
 Class {
 	#name : 'OPXMIWriterVisitorTest',
 	#superclass : 'TestCase',

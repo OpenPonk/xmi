@@ -1,3 +1,6 @@
+"
+I am a unit test class verifying the instantiation, initialization, and structure of XMI reference attributes and elements.
+"
 Class {
 	#name : 'OPXMIReferenceItemTest',
 	#superclass : 'TestCase',

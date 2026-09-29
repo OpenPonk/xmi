@@ -1,3 +1,6 @@
+"
+I am an integration test class verifying the bidirectional roundtrip (read and write) consistency of the XMI serialization infrastructure.
+"
 Class {
 	#name : 'OPXMITest',
 	#superclass : 'TestCase',

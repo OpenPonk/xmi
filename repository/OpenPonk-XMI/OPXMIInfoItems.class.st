@@ -1,3 +1,6 @@
+"
+I am the abstract base class for all XMI information items (elements and attributes) representing the parsed structure of an XMI document.
+"
 Class {
 	#name : 'OPXMIInfoItems',
 	#superclass : 'Object',

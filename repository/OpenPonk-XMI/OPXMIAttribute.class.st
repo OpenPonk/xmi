@@ -1,3 +1,6 @@
+"
+I am the abstract base class for XMI attributes. I hold the XMI name of the attribute.
+"
 Class {
 	#name : 'OPXMIAttribute',
 	#superclass : 'OPXMIInfoItems',

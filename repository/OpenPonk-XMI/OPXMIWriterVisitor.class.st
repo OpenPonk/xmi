@@ -1,3 +1,6 @@
+"
+I traverse an object-oriented hierarchy of XMI information items (elements and attributes) and utilize an XML writer to generate the corresponding XMI document structure.
+"
 Class {
 	#name : 'OPXMIWriterVisitor',
 	#superclass : 'Object',

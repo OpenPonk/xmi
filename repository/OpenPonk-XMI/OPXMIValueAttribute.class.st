@@ -1,5 +1,5 @@
 "
-XMIValueAttribute is simply an XML attribute with a value.
+I represent an XMI XML attribute containing a simple scalar string value.
 "
 Class {
 	#name : 'OPXMIValueAttribute',
@@ -56,7 +56,7 @@ OPXMIValueAttribute >> printOn: aStream [
 		<< '")'
 ]
 
-{ #category : 'accessing' }
+{ #category : 'evaluating' }
 OPXMIValueAttribute >> value [
 	^ value
 ]

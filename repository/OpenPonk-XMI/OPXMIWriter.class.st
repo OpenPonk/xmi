@@ -1,3 +1,6 @@
+"
+I am the main entry point for serializing an object-oriented hierarchy of XMI information items into an XMI-formatted string or stream.
+"
 Class {
 	#name : 'OPXMIWriter',
 	#superclass : 'Object',

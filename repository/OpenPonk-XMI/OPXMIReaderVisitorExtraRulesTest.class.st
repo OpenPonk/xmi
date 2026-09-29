@@ -1,3 +1,6 @@
+"
+I am a unit test class verifying edge cases and specific validation rules (such as rejecting self-references) within OPXMIReaderVisitor.
+"
 Class {
 	#name : 'OPXMIReaderVisitorExtraRulesTest',
 	#superclass : 'TestCase',

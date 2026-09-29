@@ -1,3 +1,6 @@
+"
+I extend the standard XML pretty printing formatter to provide explicit control over the line break character sequences used during XML generation.
+"
 Class {
 	#name : 'OPXMLPrettyPrintingWriterFormatter',
 	#superclass : 'XMLPrettyPrintingWriterFormatter',
@@ -16,13 +19,14 @@ OPXMLPrettyPrintingWriterFormatter >> lineBreak: aCharacterOrString [
 
 { #category : 'writing' }
 OPXMLPrettyPrintingWriterFormatter >> writeLineBreak [
-	self writer atBeginning
-		ifFalse: [ self writer nextPutAll: lineBreak.
-			(self currentIndentLevel > 0 and: [ self indentString size > 0 ])
-				ifTrue: [ self writeIndent ] ]
+
+	self writer atBeginning ifTrue: [ ^ self ].
+	self writer nextPutAll: lineBreak.
+	self currentIndentLevel > 0 ifTrue: [
+		self indentString ifNotEmpty: [ self writeIndent ] ]
 ]
 
-{ #category : 'writing' }
+{ #category : 'accessing' }
 OPXMLPrettyPrintingWriterFormatter >> writer: aWriter [
 	super writer: aWriter.
 	lineBreak ifNil: [ lineBreak := aWriter lineBreak ]

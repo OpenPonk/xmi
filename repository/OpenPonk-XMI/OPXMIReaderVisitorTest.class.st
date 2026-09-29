@@ -1,3 +1,6 @@
+"
+I am a unit test class verifying the accurate translation of various XML DOM nodes into specific OPXMI elements and attributes by OPXMIReaderVisitor.
+"
 Class {
 	#name : 'OPXMIReaderVisitorTest',
 	#superclass : 'TestCase',
