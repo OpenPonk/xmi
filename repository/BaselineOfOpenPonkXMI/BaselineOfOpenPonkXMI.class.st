@@ -16,12 +16,12 @@ BaselineOfOpenPonkXMI >> baseline: spec [
 		spec
 			baseline: 'OpenPonkXMLDOMVisitor'
 			with: [
-			spec repository: 'github://OpenPonk/xml-dom-visitor:v4.1.x' ].
+			spec repository: 'github://openponk/xml-dom-visitor:v5.0.0' ].
 		spec baseline: 'XMLWriter' with: [
 			spec
 				loads: #( 'Core' );
 				repository:
-					'github://pharo-contributions/XML-XMLWriter:v3.1.x' ].
+					'github://pharo-contributions/XML-XMLWriter:v3.1.2' ].
 		spec
 			package: 'OpenPonk-XMI'
 			with: [ spec requires: #( 'OpenPonkXMLDOMVisitor' 'XMLWriter' ) ].
