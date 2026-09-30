@@ -21,7 +21,7 @@ BaselineOfOpenPonkXMI >> baseline: spec [
 			spec
 				loads: #( 'Core' );
 				repository:
-					'github://pharo-contributions/XML-XMLWriter:v3.1.x' ].
+					'github://pharo-contributions/XML-XMLWriter:v3.1.x/src' ].
 		spec
 			package: 'OpenPonk-XMI'
 			with: [ spec requires: #( 'OpenPonkXMLDOMVisitor' 'XMLWriter' ) ].
