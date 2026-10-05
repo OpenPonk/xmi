@@ -1,15 +1,1 @@
-SmalltalkCISpec {
-	#loading : [
-		SCIMetacelloLoadSpec {
-			#baseline : 'OpenPonkXMI',
-			#directory : 'repository',
-			#platforms : [ #pharo ]
-		}
-	],
-	#testing : {
-		#packages : [ 'OpenPonk*' ],
-		#coverage : {
-			#packages : [ 'OpenPonk-XMI' ]
-		}
-	}
-}
+SmalltalkCISpec {	#loading : [		SCIMetacelloLoadSpec {			#baseline : 'OpenPonkXMI',			#directory : 'repository',			#platforms : [ #pharo ]		}	],	#testing : {		#packages : [ 'OpenPonk*' ],		#coverage : {			#packages : [ 'OpenPonk-XMI*' ]		}	}}
