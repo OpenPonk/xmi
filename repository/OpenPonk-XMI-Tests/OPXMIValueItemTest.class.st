@@ -4,9 +4,9 @@ I am a unit test class verifying the instantiation, initialization, and value as
 Class {
 	#name : 'OPXMIValueItemTest',
 	#superclass : 'TestCase',
-	#category : 'OpenPonk-XMI-Tests',
-	#package : 'OpenPonk-XMI',
-	#tag : 'Tests'
+	#category : 'OpenPonk-XMI-Tests-DOM',
+	#package : 'OpenPonk-XMI-Tests',
+	#tag : 'DOM'
 }
 
 { #category : 'tests' }

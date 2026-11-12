@@ -4,9 +4,9 @@ I am an integration test class verifying the bidirectional roundtrip (read and w
 Class {
 	#name : 'OPXMITest',
 	#superclass : 'TestCase',
-	#category : 'OpenPonk-XMI-Tests',
-	#package : 'OpenPonk-XMI',
-	#tag : 'Tests'
+	#category : 'OpenPonk-XMI-Tests-Writer',
+	#package : 'OpenPonk-XMI-Tests',
+	#tag : 'Writer'
 }
 
 { #category : 'tests' }

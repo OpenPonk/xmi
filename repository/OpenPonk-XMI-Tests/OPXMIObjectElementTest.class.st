@@ -4,9 +4,9 @@ I am a unit test class verifying the behavior of OPXMIObjectElement, particularl
 Class {
 	#name : 'OPXMIObjectElementTest',
 	#superclass : 'TestCase',
-	#category : 'OpenPonk-XMI-Tests',
-	#package : 'OpenPonk-XMI',
-	#tag : 'Tests'
+	#category : 'OpenPonk-XMI-Tests-DOM',
+	#package : 'OpenPonk-XMI-Tests',
+	#tag : 'DOM'
 }
 
 { #category : 'instance creation' }

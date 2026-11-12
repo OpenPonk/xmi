@@ -7,9 +7,9 @@ Class {
 	#instVars : [
 		'visitor'
 	],
-	#category : 'OpenPonk-XMI-Tests',
-	#package : 'OpenPonk-XMI',
-	#tag : 'Tests'
+	#category : 'OpenPonk-XMI-Tests-Writer',
+	#package : 'OpenPonk-XMI-Tests',
+	#tag : 'Writer'
 }
 
 { #category : 'running' }

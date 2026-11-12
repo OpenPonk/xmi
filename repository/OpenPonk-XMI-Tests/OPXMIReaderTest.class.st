@@ -4,9 +4,9 @@ I am a unit test class verifying the functionality of OPXMIReader, focusing on h
 Class {
 	#name : 'OPXMIReaderTest',
 	#superclass : 'TestCase',
-	#category : 'OpenPonk-XMI-Tests',
-	#package : 'OpenPonk-XMI',
-	#tag : 'Tests'
+	#category : 'OpenPonk-XMI-Tests-Reader',
+	#package : 'OpenPonk-XMI-Tests',
+	#tag : 'Reader'
 }
 
 { #category : 'instance creation' }

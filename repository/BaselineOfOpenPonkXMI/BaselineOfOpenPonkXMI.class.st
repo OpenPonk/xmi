@@ -28,5 +28,8 @@ BaselineOfOpenPonkXMI >> baseline: spec [
 		spec
 			package: 'OpenPonk-XMI-Inspection'
 			with: [ spec requires: #( 'OpenPonk-XMI' ) ].
-		spec group: 'default' with: #( 'OpenPonk-XMI' 'OpenPonk-XMI-Inspection' ) ]
+		spec
+			package: 'OpenPonk-XMI-Tests'
+			with: [ spec requires: #( 'OpenPonk-XMI' ) ].
+		spec group: 'default' with: #( 'OpenPonk-XMI' 'OpenPonk-XMI-Inspection' 'OpenPonk-XMI-Tests' ) ]
 ]

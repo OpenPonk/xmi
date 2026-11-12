@@ -8,9 +8,9 @@ Class {
 		'visitor',
 		'result'
 	],
-	#category : 'OpenPonk-XMI-Tests',
-	#package : 'OpenPonk-XMI',
-	#tag : 'Tests'
+	#category : 'OpenPonk-XMI-Tests-Reader',
+	#package : 'OpenPonk-XMI-Tests',
+	#tag : 'Reader'
 }
 
 { #category : 'instance creation' }
