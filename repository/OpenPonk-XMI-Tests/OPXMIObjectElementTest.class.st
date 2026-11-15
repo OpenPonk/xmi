@@ -39,20 +39,22 @@ OPXMIObjectElementTest >> nestedObjects [
 
 { #category : 'tests' }
 OPXMIObjectElementTest >> testElementNamed [
+
 	| el |
 	(el := OPXMIObjectElement new)
 		xmiName: 'container';
-		containedItems: {OPXMIObjectElement new xmiName: 'element'}.
+		containedItems: { (OPXMIObjectElement new xmiName: 'element') }.
 	self assert: (el elementNamed: 'element') xmiName equals: 'element'.
-	self assert: (el elementNamed: 'none') equals: nil
+	self assert: (el elementNamed: 'none') identicalTo: nil
 ]
 
 { #category : 'tests' }
 OPXMIObjectElementTest >> testFindElementWithXmiId1 [
+
 	| root result |
 	root := self nestedObjects.
 	result := root findElementWithXmiId: 'AAA'.
-	self assert: result equals: root
+	self assert: result identicalTo: root
 ]
 
 { #category : 'tests' }
@@ -81,22 +83,22 @@ OPXMIObjectElementTest >> testFindElementWithXmiId4 [
 
 { #category : 'tests' }
 OPXMIObjectElementTest >> testFindElementWithXmiId5 [
+
 	| root result |
 	root := self nestedObjects.
 	result := root findElementWithXmiId: 'EEE'.
-	self assert: result equals: nil
+	self assert: result identicalTo: nil
 ]
 
 { #category : 'tests' }
 OPXMIObjectElementTest >> testId [
+
 	| element |
 	element := OPXMIObjectElement new.
-	self assert: element xmiId equals: nil.
-	element
-		containedItems:
-			{OPXMIValueAttribute new
-				xmiName: #xmi:id;
-				value: 'ID'}.
+	self assert: element xmiId identicalTo: nil.
+	element containedItems: { (OPXMIValueAttribute new
+			 xmiName: #'xmi:id';
+			 value: 'ID') }.
 	self assert: element xmiId equals: 'ID'
 ]
 
@@ -111,13 +113,12 @@ OPXMIObjectElementTest >> testNameValue [
 
 { #category : 'tests' }
 OPXMIObjectElementTest >> testType [
+
 	| element |
 	element := OPXMIObjectElement new.
-	self assert: element xmiType equals: nil.
-	element
-		containedItems:
-			{OPXMIValueAttribute new
-				xmiName: #xmi:type;
-				value: 'TYPE'}.
+	self assert: element xmiType identicalTo: nil.
+	element containedItems: { (OPXMIValueAttribute new
+			 xmiName: #'xmi:type';
+			 value: 'TYPE') }.
 	self assert: element xmiType equals: 'TYPE'
 ]
