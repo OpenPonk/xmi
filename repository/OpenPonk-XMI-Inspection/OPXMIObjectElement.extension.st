@@ -1,18 +1,18 @@
 Extension { #name : 'OPXMIObjectElement' }
 
 { #category : '*OpenPonk-XMI-Inspection' }
-OPXMIObjectElement >> inspectionProperties [
+OPXMIObjectElement >> inspectionProperties: aBuilder [
 
-	"<inspectorPresentationOrder: 5 title: 'Tree'>"
-	^ SpTreePresenter new
+	<inspectorPresentationOrder: 5 title: 'Tree'>
+	^ aBuilder newTree
 		  roots: { self };
-		  children: [ :each | 
-			  each isObjectElement
-				  ifTrue: [ each containedItems ]
-				  ifFalse: [ 
-					  each isReferenceItem
-						  ifTrue: [ each referencedElements ]
-						  ifFalse: [ #(  ) ] ] ];
+		  children: [ :each |
+				  each isObjectElement
+					  ifTrue: [ each containedItems ]
+					  ifFalse: [
+							  each isReferenceItem
+								  ifTrue: [ each referencedElements ]
+								  ifFalse: [ #(  ) ] ] ];
 		  display: [ :each | each treeViewLabelText ];
 		  yourself
 ]

@@ -59,6 +59,23 @@ OPXMIWriterVisitorTest >> testVisitReferenceAttribute [
 ]
 
 { #category : 'tests' }
+OPXMIWriterVisitorTest >> testVisitReferenceAttributeMultipleViaAccept [
+
+	| target1 target2 |
+	target1 := OPXMIObjectElement new
+		           xmiName: 'first';
+		           containedItems: { (OPXMIValueAttribute xmiName: 'xmi:id' value: 'AAA') }.
+	target2 := OPXMIObjectElement new
+		           xmiName: 'second';
+		           containedItems: { (OPXMIValueAttribute xmiName: 'xmi:id' value: 'BBB') }.
+	visitor writer tag: 'outer' with: [
+			visitor visit: (OPXMIReferenceAttribute xmiName: 'keys' referencedElements: {
+						 target1.
+						 target2 }) ].
+	self assert: visitor contents lines last equals: '<outer keys="AAA BBB"/>'
+]
+
+{ #category : 'tests' }
 OPXMIWriterVisitorTest >> testVisitReferenceElement [
 	visitor
 		visitReferenceElement:

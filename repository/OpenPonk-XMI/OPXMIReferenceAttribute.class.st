@@ -5,8 +5,7 @@ Class {
 	#name : 'OPXMIReferenceAttribute',
 	#superclass : 'OPXMIAttribute',
 	#instVars : [
-		'referencedElements',
-		'href'
+		'referencedElements'
 	],
 	#category : 'OpenPonk-XMI-DOM',
 	#package : 'OpenPonk-XMI',
@@ -28,12 +27,8 @@ OPXMIReferenceAttribute >> accept: aVisitor [
 
 { #category : 'accessing' }
 OPXMIReferenceAttribute >> href [
-	^ href
-]
 
-{ #category : 'accessing' }
-OPXMIReferenceAttribute >> href: anObject [
-	href := anObject
+	^ nil
 ]
 
 { #category : 'initialization' }
@@ -49,10 +44,10 @@ OPXMIReferenceAttribute >> isReferenceAttribute [
 
 { #category : 'printing' }
 OPXMIReferenceAttribute >> printOn: aStream [
-	aStream
-		<< 'XMIReferenceAttribute(';
-		<< xmiName;
-		<< '")'
+
+	aStream << 'XMIReferenceAttribute('.
+	xmiName ifNotNil: [ aStream << xmiName ].
+	aStream << ')'
 ]
 
 { #category : 'accessing' }

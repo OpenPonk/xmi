@@ -33,6 +33,17 @@ OPXMIReaderVisitorTest >> setUp [
 ]
 
 { #category : 'tests' }
+OPXMIReaderVisitorTest >> testEmptyObjectElementWithOnlyXmiType [
+
+	| document |
+	document := XMLDOMParser parse: '<packagedElement xmi:type="uml:Class"/>' usingNamespaces: false.
+	result := visitor visitDocument: document.
+	self assert: result class identicalTo: OPXMIObjectElement.
+	self assert: result xmiName equals: 'packagedElement'.
+	self assert: result xmiType equals: 'uml:Class'
+]
+
+{ #category : 'tests' }
 OPXMIReaderVisitorTest >> testIsReferenceAttribute [
 
 	self
@@ -100,6 +111,14 @@ OPXMIReaderVisitorTest >> testIsReferenceElementNot [
 	self
 		deny: (visitor isReferenceElement: (self elementNamed: 'el' attributes: { (#other -> #sth) }))
 		description: 'Element with arbitrary non-reference attributes must not be treated as a reference element'
+]
+
+{ #category : 'tests' }
+OPXMIReaderVisitorTest >> testIsReferenceElementNotOnlyXmiType [
+
+	self
+		deny: (visitor isReferenceElement: (self elementNamed: 'packagedElement' attributes: { (#'xmi:type' -> 'uml:Class') }))
+		description: 'Element with only xmi:type and no href or xmi:idref must not be treated as a reference element'
 ]
 
 { #category : 'tests' }

@@ -56,11 +56,12 @@ OPXMIReaderVisitor >> isReferenceAttribute: aXMLAttribute [
 
 { #category : 'testing' }
 OPXMIReaderVisitor >> isReferenceElement: aXMLElement [
+
 	| names |
-	aXMLElement hasAttributes not | aXMLElement hasElements
-		ifTrue: [ ^ false ].
+	(aXMLElement hasAttributes not or: [ aXMLElement hasElements ]) ifTrue: [ ^ false ].
 	names := aXMLElement attributeNodes collect: #name.
-	^ names allSatisfy: [ :each | #('xmi:idref' 'href' 'xmi:type') includes: each ]
+	^ (names anySatisfy: [ :each | #( 'xmi:idref' 'href' ) includes: each ]) and: [
+		  names allSatisfy: [ :each | #( 'xmi:idref' 'href' 'xmi:type' ) includes: each ] ]
 ]
 
 { #category : 'testing' }
@@ -74,19 +75,15 @@ OPXMIReaderVisitor >> isValueElement: aXMLElement [
 
 { #category : 'factory' }
 OPXMIReaderVisitor >> objectElementFor: aXMLElement [
+
 	| element |
 	element := OPXMIObjectElement new
-		xmiName: aXMLElement localName;
-		yourself.
-	element
-		containedItems:
-			(aXMLElement attributeNodes collect: [ :attr | self valueAttributeFor: attr ])
-				asOrderedCollection.
-	unresolved
-		add: [ element
-				containedItems:
-					(aXMLElement attributeNodes collect: [ :attr | self attributeFor: attr ])
-						asOrderedCollection, (element containedItems select: #isElement) ].
+		           xmiName: aXMLElement localName;
+		           yourself.
+	element containedItems: (aXMLElement attributeNodes collect: [ :attr | self valueAttributeFor: attr ] as: OrderedCollection).
+	unresolved add: [
+			element containedItems: (aXMLElement attributeNodes collect: [ :attr | self attributeFor: attr ] as: OrderedCollection)
+				, (element containedItems select: #isElement) ].
 	^ element
 ]
 
@@ -103,16 +100,11 @@ OPXMIReaderVisitor >> referenceElementFor: aXMLElement [
 
 	| el attribute |
 	(el := OPXMIReferenceElement new) xmiName: aXMLElement localName.
-	attribute := aXMLElement attributeNodes detect: [ :each |
-		             each name = 'href' or: [ each name = 'xmi:idref' ] ].
+	attribute := aXMLElement attributeNodes detect: [ :each | #( 'href' 'xmi:idref' ) includes: each name ].
 	attribute name = 'href'
 		ifTrue: [ el href: attribute value ]
-		ifFalse: [
-				unresolved add: [
-					el referencedElements: { (refIdMapping at: attribute value) } ] ].
-	aXMLElement attributeNodes
-		detect: [ :each | each name = 'xmi:type' ]
-		ifFound: [ :typeAttrib | el xmiType: typeAttrib value ].
+		ifFalse: [ unresolved add: [ el referencedElements: { (refIdMapping at: attribute value) } ] ].
+	aXMLElement attributeNodes detect: [ :each | each name = 'xmi:type' ] ifFound: [ :typeAttrib | el xmiType: typeAttrib value ].
 	^ el
 ]
 
@@ -146,11 +138,11 @@ OPXMIReaderVisitor >> visitDocument: aDocument [
 
 { #category : 'visiting' }
 OPXMIReaderVisitor >> visitElement: aXMLElement [
+
 	| element |
 	element := self elementFor: aXMLElement.
 	mapping at: aXMLElement put: element.
 	mapping at: aXMLElement parent ifPresent: [ :parent | parent containedItems add: element ].
-	element isObjectElement
-		ifTrue: [ refIdMapping at: element xmiId put: element ].
+	element isObjectElement ifTrue: [ element xmiId ifNotNil: [ :id | refIdMapping at: id put: element ] ].
 	super visitElement: aXMLElement
 ]

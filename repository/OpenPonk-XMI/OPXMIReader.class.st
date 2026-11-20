@@ -10,12 +10,6 @@ Class {
 }
 
 { #category : 'instance creation' }
-OPXMIReader class >> read: aStream mapping: aMapping [
-	aMapping at: 'result' put: aStream contents.
-	^ (self readFromMapping: aMapping) at: 'result'
-]
-
-{ #category : 'instance creation' }
 OPXMIReader class >> readFrom: aStream [
 	^ self new readFrom: aStream
 ]
@@ -46,21 +40,19 @@ OPXMIReader >> readFromMapping: aMapping [
 
 { #category : 'instance creation' }
 OPXMIReader >> resolveHrefIn: aReferenceItem with: aMapping [
+
 	| parts ref |
 	aReferenceItem href ifNil: [ ^ self ].
 	parts := aReferenceItem href splitOn: '#'.
-	self flag: 'hack to circumvent package imports which are not properly resolved yet'.
-	aMapping
-		at: parts first
-		ifPresent: [ :root | ref := root findElementWithXmiId: parts second ].
-	(ref isNil
-		and:
-			[ aReferenceItem isReferenceElement and: [ aReferenceItem xmiType = 'uml:PrimitiveType' ] ])
-		ifTrue: [ aMapping values
+	parts size < 2 ifTrue: [ ^ self ].
+	ref := nil.
+	"Fallback across all mapped documents for uml:PrimitiveType when package imports are not resolved directly."
+	aMapping at: parts first ifPresent: [ :root | ref := root findElementWithXmiId: parts second ].
+	(ref isNil and: [ aReferenceItem isReferenceElement and: [ aReferenceItem xmiType = 'uml:PrimitiveType' ] ]) ifTrue: [
+			aMapping values
 				detect: [ :root | (root findElementWithXmiId: parts second) isNotNil ]
 				ifFound: [ :root | ref := root findElementWithXmiId: parts second ] ].
-	"	ref ifNil: [ self error: 'Unable to resolve a reference.' ]."
-	ref ifNotNil: [ aReferenceItem referencedElements: {ref} ]
+	ref ifNotNil: [ aReferenceItem referencedElements: { ref } ]
 ]
 
 { #category : 'instance creation' }

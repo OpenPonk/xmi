@@ -19,7 +19,8 @@ OPXMIObjectElement >> accept: aVisitor [
 
 { #category : 'accessing' }
 OPXMIObjectElement >> containedItem [
-	^ containedItems ifEmpty: [ ^ nil ] ifNotEmpty: #first
+
+	^ containedItems ifEmpty: [ nil ] ifNotEmpty: #first
 ]
 
 { #category : 'accessing' }
@@ -72,21 +73,17 @@ OPXMIObjectElement >> nameValue [
 
 { #category : 'printing' }
 OPXMIObjectElement >> printOn: aStream [
-	aStream
-		<< 'XMIObjectElement(';
-		<< xmiName.
-	self xmiId
-		ifNotNil: [ :id | 
-			aStream
-				<< ' xmi:id="';
-				<< id;
-				<< '"' ].
-	self xmiType
-		ifNotNil: [ :type | 
-			aStream
-				<< ' xmi:type="';
-				<< type;
-				<< '"' ].
+
+	aStream << 'XMIObjectElement('.
+	xmiName ifNotNil: [ aStream << xmiName ].
+	self xmiId ifNotNil: [ :id |
+			aStream << ' xmi:id="'.
+			aStream << id.
+			aStream << '"' ].
+	self xmiType ifNotNil: [ :type |
+			aStream << ' xmi:type="'.
+			aStream << type.
+			aStream << '"' ].
 	aStream << ')'
 ]
 

@@ -17,6 +17,21 @@ OPXMITest >> normalized: aString [
 ]
 
 { #category : 'tests' }
+OPXMITest >> testPrettyPrintingFormatterLineBreakAndAtBeginning [
+
+	| writer formatter expected |
+	writer := XMLWriter new.
+	formatter := OPXMLPrettyPrintingWriterFormatter new.
+	writer formatter: formatter.
+	formatter lineBreak: String crlf.
+	formatter writeLineBreak.
+	self assertEmpty: writer contents.
+	writer tag: 'root' with: [ writer tag: 'child' ].
+	expected := #( '<root>' '    <child/>' '</root>' ) joinUsing: String crlf.
+	self assert: writer contents equals: expected
+]
+
+{ #category : 'tests' }
 OPXMITest >> testReadWrite [
     | in root out |
     in := '<?xml version="1.0" encoding="UTF-8"?>
@@ -33,4 +48,29 @@ OPXMITest >> testReadWrite [
     root := OPXMIReader readFrom: in readStream.
     out := OPXMIWriter toString: root.
     self assert: (self normalized: in) equals: (self normalized: out)
+]
+
+{ #category : 'tests' }
+OPXMITest >> testReadWriteWithReferenceAttribute [
+
+	| input root output |
+	input := '<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI>
+	<container xmi:id="AA">
+		<item xmi:id="BB" target="CC"/>
+		<item xmi:id="CC"/>
+	</container>
+</xmi:XMI>'.
+	root := OPXMIReader readFrom: input readStream.
+	output := OPXMIWriter toString: root.
+	self assert: (self normalized: output) equals: (self normalized: input)
+]
+
+{ #category : 'tests' }
+OPXMITest >> testWriteToStream [
+
+	| root output |
+	root := OPXMIObjectElement new xmiName: 'XMI'.
+	output := String streamContents: [ :stream | OPXMIWriter write: root toStream: stream ].
+	self assert: output equals: (OPXMIWriter toString: root)
 ]

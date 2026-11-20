@@ -2,7 +2,11 @@ Extension { #name : 'OPXMIInfoItems' }
 
 { #category : '*OpenPonk-XMI-Inspection' }
 OPXMIInfoItems >> treeViewLabelText [
-	^ self asHighlightedTextWrittenWith: [ :writer | self writeTreeViewLabelXMLOn: writer ]
+
+	| writer |
+	writer := XMLWriter new.
+	self writeTreeViewLabelXMLOn: writer.
+	^ writer contents
 ]
 
 { #category : '*OpenPonk-XMI-Inspection' }
@@ -12,4 +16,6 @@ OPXMIInfoItems >> writeTreeViewLabelXMLOn: aWriter [
 
 { #category : '*OpenPonk-XMI-Inspection' }
 OPXMIInfoItems >> writeXMLOn: aWriter [
+
+	self subclassResponsibility
 ]

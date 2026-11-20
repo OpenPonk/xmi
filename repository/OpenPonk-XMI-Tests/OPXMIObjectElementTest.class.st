@@ -38,6 +38,30 @@ OPXMIObjectElementTest >> nestedObjects [
 ]
 
 { #category : 'tests' }
+OPXMIObjectElementTest >> testAbstractClasses [
+
+	self assert: OPXMIInfoItems isAbstract description: 'OPXMIInfoItems must be abstract'.
+	self assert: OPXMIAttribute isAbstract description: 'OPXMIAttribute must be abstract'.
+	self assert: OPXMIElement isAbstract description: 'OPXMIElement must be abstract'.
+	self deny: OPXMIObjectElement isAbstract description: 'OPXMIObjectElement must be concrete'.
+	self deny: OPXMIReferenceAttribute isAbstract description: 'OPXMIReferenceAttribute must be concrete'.
+	self deny: OPXMIReferenceElement isAbstract description: 'OPXMIReferenceElement must be concrete'.
+	self deny: OPXMIValueAttribute isAbstract description: 'OPXMIValueAttribute must be concrete'.
+	self deny: OPXMIValueElement isAbstract description: 'OPXMIValueElement must be concrete'
+]
+
+{ #category : 'tests' }
+OPXMIObjectElementTest >> testContainedItem [
+
+	| element child |
+	element := OPXMIObjectElement new xmiName: 'container'.
+	self assert: element containedItem identicalTo: nil.
+	child := OPXMIObjectElement new xmiName: 'child'.
+	element containedItems: { child }.
+	self assert: element containedItem identicalTo: child
+]
+
+{ #category : 'tests' }
 OPXMIObjectElementTest >> testElementNamed [
 
 	| el |
@@ -112,6 +136,20 @@ OPXMIObjectElementTest >> testNameValue [
 ]
 
 { #category : 'tests' }
+OPXMIObjectElementTest >> testPrintOn [
+
+	| element |
+	element := OPXMIObjectElement new
+		           xmiName: 'Class';
+		           containedItems: {
+				           (OPXMIValueAttribute xmiName: #'xmi:id' value: 'ID1').
+				           (OPXMIValueAttribute xmiName: #'xmi:type' value: 'uml:Class') }.
+	self assert: element printString equals: 'XMIObjectElement(Class xmi:id="ID1" xmi:type="uml:Class")'.
+	self assert: (OPXMIObjectElement new xmiName: 'Plain') printString equals: 'XMIObjectElement(Plain)'.
+	self assert: OPXMIObjectElement new printString equals: 'XMIObjectElement()'
+]
+
+{ #category : 'tests' }
 OPXMIObjectElementTest >> testType [
 
 	| element |
@@ -121,4 +159,20 @@ OPXMIObjectElementTest >> testType [
 			 xmiName: #'xmi:type';
 			 value: 'TYPE') }.
 	self assert: element xmiType equals: 'TYPE'
+]
+
+{ #category : 'tests' }
+OPXMIObjectElementTest >> testTypePredicates [
+
+	| element |
+	element := OPXMIObjectElement new.
+	self assert: element isElement description: 'Object element must be an element'.
+	self assert: element isObjectElement description: 'Object element must report isObjectElement'.
+	self deny: element isAttribute description: 'Object element must not be an attribute'.
+	self deny: element isReferenceAttribute description: 'Object element must not be a reference attribute'.
+	self deny: element isReferenceElement description: 'Object element must not be a reference element'.
+	self deny: element isReferenceItem description: 'Object element must not be a reference item'.
+	self deny: element isValueAttribute description: 'Object element must not be a value attribute'.
+	self deny: element isValueElement description: 'Object element must not be a value element'.
+	self deny: element isValueItem description: 'Object element must not be a value item'
 ]

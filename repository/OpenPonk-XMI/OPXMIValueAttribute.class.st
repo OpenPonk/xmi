@@ -48,12 +48,12 @@ OPXMIValueAttribute >> isValueAttribute [
 
 { #category : 'printing' }
 OPXMIValueAttribute >> printOn: aStream [
-	aStream
-		<< 'XMIValueAttribute(';
-		<< xmiName;
-		<< '="';
-		<< value;
-		<< '")'
+
+	aStream << 'XMIValueAttribute('.
+	xmiName ifNotNil: [ aStream << xmiName ].
+	aStream << '="'.
+	value ifNotNil: [ aStream << value ].
+	aStream << '")'
 ]
 
 { #category : 'evaluating' }

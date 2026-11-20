@@ -82,6 +82,61 @@ OPXMIReaderTest >> testResolveHref [
 	self assert: reference referencedElement identicalTo: someFileXmi containedItem
 ]
 
+{ #category : 'tests' }
+OPXMIReaderTest >> testResolveHrefPrimitiveTypeFallbackAcrossMapping [
+
+	| mapping result uml type |
+	mapping := OrderedDictionary
+		           with: 'UML.xmi' -> '<wrap><ownedAttribute>
+	<type xmi:type="uml:PrimitiveType" href="http://www.omg.org/spec/UML/20131001/PrimitiveTypes.xmi#String" />
+</ownedAttribute></wrap>'
+		           with: 'PrimitiveTypes.xmi' -> self umlTypesContents.
+	result := OPXMIReader readFromMapping: mapping.
+	uml := (result at: 'UML.xmi') containedItems first.
+	type := (result at: 'PrimitiveTypes.xmi') containedItems first.
+	self assert: uml containedItems first referencedElement identicalTo: type
+]
+
+{ #category : 'tests' }
+OPXMIReaderTest >> testResolveHrefUnresolvedLeavesReferencedElementsEmpty [
+
+	| reference primitiveReference map |
+	reference := OPXMIReferenceElement new
+		             xmiName: 'ref';
+		             href: 'missing.xmi#NONE'.
+	primitiveReference := OPXMIReferenceElement new
+		                      xmiName: 'type';
+		                      xmiType: 'uml:PrimitiveType';
+		                      href: 'missing.xmi#UnknownType'.
+	map := Dictionary with: 'Other.xmi' -> (OPXMIObjectElement new xmiName: 'container').
+	OPXMIReader new resolveHrefIn: reference with: map.
+	OPXMIReader new resolveHrefIn: primitiveReference with: map.
+	self assertEmpty: reference referencedElements.
+	self assertEmpty: primitiveReference referencedElements
+]
+
+{ #category : 'tests' }
+OPXMIReaderTest >> testResolveHrefWhenHrefIsNil [
+
+	| target reference |
+	target := OPXMIObjectElement new xmiName: 'target'.
+	reference := OPXMIReferenceElement xmiName: 'ref' referencedElements: { target }.
+	OPXMIReader new resolveHrefIn: reference with: Dictionary new.
+	self assert: reference referencedElement identicalTo: target
+]
+
+{ #category : 'tests' }
+OPXMIReaderTest >> testResolveHrefWithoutFragment [
+
+	| reference map |
+	reference := OPXMIReferenceElement new
+		             xmiName: 'reference';
+		             href: 'someFile.xmi'.
+	map := Dictionary with: 'someFile.xmi' -> (OPXMIObjectElement new xmiName: 'container').
+	OPXMIReader new resolveHrefIn: reference with: map.
+	self assertEmpty: reference referencedElements
+]
+
 { #category : 'instance creation' }
 OPXMIReaderTest >> umlTypedElementContents [
 	^ '<wrap><ownedAttribute>
